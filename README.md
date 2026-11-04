@@ -17,10 +17,17 @@ Explain the API connection, system prompt, tool definitions, and tool execution 
 
 
 
-## Demonstration (Examples Usage UI)
+## Demonstration (Examples Usage UI)  
+
 Show order lookup, shipping-status inquiries, cancellations, and refund eligibility checks with screenshots or a short video.
 
+### Web UI 
 
+![Web_UI](
+
+### Example Prompts 
+
+---  
 
 ## Safety and limitations (Limitations & Workarounds)  
 
