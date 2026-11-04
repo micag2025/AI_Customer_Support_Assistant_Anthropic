@@ -17,26 +17,51 @@ Explain the API connection, system prompt, tool definitions, and tool execution 
 
 
 
-## Demonstration 
+## Demonstration (Examples Usage UI)
 Show order lookup, shipping-status inquiries, cancellations, and refund eligibility checks with screenshots or a short video.
 
 
 
-## Safety and limitations 
+## Safety and limitations (Limitations & Workarounds)  
+
 Explain confirmation requirements, fictional shipping records, in-memory storage, and simulated refunds.
 
+---  
 
+## Production roadmap  
 
-## Production roadmap 
-Describe how persistent storage, authentication, real shipping APIs, and payment integrations could extend the prototype.
+Describe how persistent storage, authentication, real shipping APIs, and payment integrations could extend the prototype.  
 
+---  
 
+## Contributing  
 
-## Conclusion and resources 
-Summarize what readers can learn and link to the GitHub repository and setup instructions.
+Contributions are welcomed to improve the AI-Powered Customer Support Assistant with Anthropic Claude. Suggested workflow:
+
+1. Fork the GitHub repository    
+2. Create a feature branch:  
+   
+```bash  
+git checkout -b feat/your-feature
+```
+
+3. Commit and push your changes  
+4. Submit a Pull Request and describe your contribution.
+   
+> _Note_ : Please follow the repository code style and add tests for major features.
+
+---  
+
+## Conclusion  
+
+Summarize what readers can learn 
+
+---  
 
 ## References  
 
+- [Claude Platform Docs](https://platform.claude.com/docs/en/home)    
+- [Anthropic](https://www.anthropic.com/)    
 - [Technical Evaluation Rubric](https://app.readytensor.ai/publications/technical-excellence-in-aiml-and-data-science-publications-an-evaluation-rubric-WsaE5uxLBqnH)  
 - [Engage and Inspire: Best Practices for Publishing on Ready Tensor](https://app.readytensor.ai/publications/engage-and-inspire-best-practices-for-publishing-on-ready-tensor-SBgkOyUsP8qQ)
 - [The Open Source Repository Guide: Best Practices for Sharing Your AI/ML and Data Science Projects](https://app.readytensor.ai/publications/best-practices-for-ai-project-code-repositories-0llldKKtn8Xb)
