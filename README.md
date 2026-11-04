@@ -15,7 +15,7 @@ Show how Streamlit, Claude, the Python backend, and the simulated database commu
 ## Implementation 
 Explain the API connection, system prompt, tool definitions, and tool execution loop.
 
-
+---  
 
 ## Demonstration (Examples Usage UI)  
 
@@ -23,9 +23,24 @@ Show order lookup, shipping-status inquiries, cancellations, and refund eligibil
 
 ### Web UI 
 
-![Web_UI](
+![Web_UI](Screenshots/Screenshot_14-10-2026_18413_localhost.jpeg)
 
-### Example Prompts 
+### Example 1 Prompts  
+
+![Example1](Screenshots/Screenshot_14-10-2026_183433_localhost.jpeg)  
+
+### Example 2 Prompts  
+
+![Example2](Screenshots/Screenshot_14-10-2026_183833_localhost.jpeg)  
+
+### Example 3 Prompts  
+
+![Example3](Screenshots/Screenshot_14-10-2026_184035_localhost.jpeg)  
+
+### Example 4 Prompts   
+
+![Example4](Screenshots/Screenshot_14-10-2026_184155_localhost.jpeg)
+
 
 ---  
 
