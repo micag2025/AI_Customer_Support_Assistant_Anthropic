@@ -138,7 +138,14 @@ Streamlit will start the application and provide a local URL, normally:
 http://localhost:8501
 ```
 
-Open that address in your browser to interact with the customer-support assistant.
+Open that address in your browser to interact with the customer-support assistant.  
+
+## Stop the application  
+
+```bash
+pkill -f TO BE VERIFIED
+```
+---  
 
 ## Example Use Cases (UI Walkthrough & Example Runs)  
 
@@ -285,7 +292,9 @@ This repository is intended for learning and experimentation.
 - No real payment processor or logistics provider is connected.
 - The application should not be used to handle real customer information or transactions without additional security and operational controls.
 
-A production implementation would require persistent data storage, user authentication, authorization, secure API integrations, audit logging, error handling, and appropriate privacy controls.
+A production implementation would require persistent data storage, user authentication, authorization, secure API integrations, audit logging, error handling, and appropriate privacy controls.  
+
+---  
 
 ## Possible Future Improvements
 
@@ -300,7 +309,26 @@ The project provides a starting point for further development. Potential extensi
 - Improving observability, error handling, and conversation management.
 - Exploring more advanced agent workflows.
 
-## Learning Objectives
+---  
+
+## Contributing  
+
+Contributions are welcomed to improve the Anthropic Claude Customer Support Assistant. Suggested workflow:  
+
+- Fork the GitHub repository  
+- Create a feature branch:
+  
+```bash  
+git checkout -b feat/your-feature
+```
+- Commit and push your changes  
+- Submit a Pull Request and describe your contribution.  
+
+>_Note : Please follow the repository code style and add tests for major features._
+
+---  
+
+## Learning Objectives (PARAGRAPH TO BE MOVED )
 
 This project is intended to demonstrate practical concepts in AI application development:
 
