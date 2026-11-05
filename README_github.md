@@ -23,7 +23,23 @@ The project uses Anthropic Claude for natural-language understanding and tool se
 
 > _Important: This is a demonstration application. Customer, order, and shipping information is simulated. Refund and cancellation operations affect only the demo backend; no real payments, shipments, or customer accounts are modified._
 
----  
+---    
+
+## Who Is This Project For?
+
+This project is intended for:
+
+- Customer support agents
+- E-commerce businesses
+- Online retailers
+- Small and medium-sized businesses (SMBs)
+- Customer service managers
+- AI developers and students
+- Software developers interested in LLMs and tool calling
+
+It provides both a practical example of AI-assisted customer support and a learning resource for developers exploring Anthropic Claude, Python, Streamlit, and API-based tool integration.  
+
+---
 
 ## Main Features  
 
