@@ -31,6 +31,21 @@ The publication should communicate three things:
 2. **The solution**: A Streamlit application connects Claude to Python functions that simulate these operations, with safeguards around sensitive actions.  
 3. **The learning value**: The project demonstrates tool use, backend integration, prompt design, and the steps needed to move from a prototype toward a production system.  
 
+---    
+
+## Who Can Benefit from This Application?  (Potentital Users)  
+
+This application could be useful for:  
+- **Customer support agents** – to handle routine customer inquiries.  
+- **E-commerce businesses** – to assist customers with orders, shipping, and refunds.  
+- **Online retailers** – to automate basic post-purchase support.  
+- **Customer service managers** – to improve support workflows and response times.  
+- **Small and medium-sized businesses (SMBs)** – to provide AI-assisted customer service with limited resources.  
+- **AI developers and students** – to learn how to build AI assistants using Claude, Python, APIs, and tool calling.  
+- **Software developers** – to explore how LLMs can interact with business systems through external tools.    
+
+> _Note: The current prototype is intended for demonstration and learning purposes, not direct use in live customer-support operations._  
+
 ---  
 
 ## 2. System Architecture
