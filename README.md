@@ -232,7 +232,9 @@ Show order lookup, shipping-status inquiries, cancellations, and refund eligibil
 
 ### Web UI 
 
-![Web_UI](Screenshots/Screenshot_14-10-2026_18413_localhost.jpeg)
+![Web_UI](Screenshots/Screenshot_14-10-2026_18413_localhost.jpeg)  
+
+---
 
 ### Example 1 Order lookup
 
@@ -242,19 +244,25 @@ Show order lookup, shipping-status inquiries, cancellations, and refund eligibil
 
 > prompt to be enclosed 
 
-![Example2](Screenshots/Screenshot_14-10-2026_183833_localhost.jpeg)  
+![Example2](Screenshots/Screenshot_14-10-2026_183833_localhost.jpeg)    
+
+---  
 
 ### Example 2 Shipping information
 
 > What is the shipping status of order 13579?
 
-![sceentshot to be enclosed] 
+![sceentshot to be enclosed]   
+
+---  
 
 ### Example 3 Refund eligibility
 
 > Can you check whether order 97531 is eligible for a refund?  
 
-![Example3](Screenshots/Screenshot_14-10-2026_184035_localhost.jpeg)  
+![Example3](Screenshots/Screenshot_14-10-2026_184035_localhost.jpeg)    
+
+---  
 
 ### Example 4 Order cancellation
 
