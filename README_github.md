@@ -149,7 +149,9 @@ pkill -f TO BE VERIFIED
 
 ## Example Use Cases (UI Walkthrough & Example Runs)  
 
-**Web UI**   
+### Web UI  
+
+The application features a clean, dark-themed interface built with Streamlit. The sidebar provides an overview of the available `customer-support functions`, including `order tracking`, `order lookup`, `refund eligibility checks`, and `order cancellations`. It also includes access to fictional demo records and a button to clear the conversation. The main area displays the application title, a notice explaining the simulated environment, and a `chat input where users can submit questions or requests`. This simple layout makes the assistant easy to navigate and interact with while demonstrating its main customer-support capabilities.
 
 ![Web_UI](Screenshots/Screenshot_Interface.jpeg)
 
@@ -157,7 +159,7 @@ pkill -f TO BE VERIFIED
 
 Once the application is running, you can try requests such as:
 
-**Order lookup**
+### Order lookup
 
 > Can you check the details of order 24601?
 
@@ -171,7 +173,7 @@ Once the application is running, you can try requests such as:
 
 ---  
 
-**Shipping information**
+### Shipping information
 
 > What is the shipping status of order 13579?
 
@@ -179,7 +181,7 @@ SCREENSHOT TO BE ENCLOSED
 
 ---  
 
-**Refund eligibility**
+### Refund eligibility
 
 > Can you check whether order 97531 is eligible for a refund?
 
@@ -187,7 +189,7 @@ SCREENSHOT TO BE ENCLOSED
 
 ---  
 
-**Order cancellation**
+### Order cancellation  
 
 > I would like to cancel order 28164. Can you check whether that is possible?
 
