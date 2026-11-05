@@ -5,7 +5,7 @@ A practical customer-support chatbot built with **Anthropic Claude, Python, and 
 
 ## Overview  
 
-This repository contains the full implementation for the publication **TITLE TO BE ENCLOSED**, published on the Ready Tensor platform.  A companion publication on the **Ready Tensor platform** presents the motivation, architecture, implementation, and lessons learned while developing this application.
+This repository contains the full implementation of the publication **Building an AI-Powered Customer Support Assistant with Anthropic Claude**, published on the **Ready Tensor platform**.  A companion publication on the **Ready Tensor platform** presents the motivation, architecture, implementation, and lessons learned while developing this application.
 
 Customer-support teams frequently handle recurring requests such as:
 
@@ -78,8 +78,8 @@ This section shows how to install dependencies, configure authentication, and ru
 
 ### Prerequisites:
 
-Python 3.10+
-Anthropica Clauude API key
+Python 3.10+  
+Anthropic Clauude API key  
 
 ### 1. Clone the repository
 
@@ -140,7 +140,13 @@ http://localhost:8501
 
 Open that address in your browser to interact with the customer-support assistant.
 
-## Example Use Cases (UI Walkthrough & Example Runs)
+## Example Use Cases (UI Walkthrough & Example Runs)  
+
+**Web UI**   
+
+![Web_UI](Screenshots/Screenshot_14-10-2026_18413_localhost.jpeg)
+
+---  
 
 Once the application is running, you can try requests such as:
 
@@ -148,19 +154,41 @@ Once the application is running, you can try requests such as:
 
 > Can you check the details of order 24601?
 
+![Example1](Screenshots/Screenshot_14-10-2026_183433_localhost.jpeg)    
+
+---
+
+> QUERY TO BE ENCLOSED
+
+![Example3](Screenshots/Screenshot_14-10-2026_184035_localhost.jpeg)    
+
+---  
+
 **Shipping information**
 
 > What is the shipping status of order 13579?
+
+SCREENSHOT TO BE ENCLOSED   
+
+---  
 
 **Refund eligibility**
 
 > Can you check whether order 97531 is eligible for a refund?
 
+![Example3](Screenshots/Screenshot_14-10-2026_184035_localhost.jpeg)    
+
+---  
+
 **Order cancellation**
 
 > I would like to cancel order 28164. Can you check whether that is possible?
 
-The actual outcome depends on the demo records and the business rules implemented in the backend.
+![Example4](Screenshots/Screenshot_14-10-2026_184155_localhost.jpeg)
+
+The actual outcome depends on the demo records and the business rules implemented in the backend.  
+
+---
 
 ## How It Works
 
@@ -174,49 +202,7 @@ The application separates the conversational layer from the business logic.
 6. Claude uses the result to formulate a response for the user.
 7. For sensitive operations, the application follows its confirmation and eligibility checks before executing the action.
 
-This architecture illustrates how an LLM can interact with application functionality without directly accessing or modifying the underlying database.
-
-## Safety and Limitations
-
-This repository is intended for learning and experimentation.
-
-- The database contains fictional demonstration records.
-- Order and shipping information is not retrieved from real external services.
-- Refund and cancellation operations are simulated.
-- No real payment processor or logistics provider is connected.
-- The application should not be used to handle real customer information or transactions without additional security and operational controls.
-
-A production implementation would require persistent data storage, user authentication, authorization, secure API integrations, audit logging, error handling, and appropriate privacy controls.
-
-## Possible Future Improvements
-
-The project provides a starting point for further development. Potential extensions include:
-
-- Replacing the simulated database with a persistent database.
-- Integrating real shipping and tracking APIs.
-- Connecting to a payment provider in a controlled test environment.
-- Adding authentication and role-based authorization.
-- Introducing audit logs for sensitive operations.
-- Adding automated tests for backend functions and tool execution.
-- Improving observability, error handling, and conversation management.
-- Exploring more advanced agent workflows.
-
-## Learning Objectives
-
-This project is intended to demonstrate practical concepts in AI application development:
-
-- Connecting a large language model to a Python application.
-- Using Anthropic Claude's tool-calling capabilities.
-- Designing tool schemas and backend functions.
-- Separating language-model reasoning from business operations.
-- Building a conversational interface with Streamlit.
-- Introducing confirmation and eligibility checks for sensitive actions.
-
-
-
-
-
-This project uses Anthropic Claude through the Anthropic API and Streamlit to provide the conversational application interface.
+This architecture illustrates how an LLM can interact with application functionality without directly accessing or modifying the underlying database.  
 
 ## Architecture structure   
 
@@ -285,7 +271,47 @@ The following diagram illustrates the main communication flow:
         └──────────────────────────┘
 
 
-*Figure 1 — Simplified system architecture showing how a user request travels through Streamlit, Anthropic Claude, the Python backend, and the simulated database before the final response is returned to the user. (Logical architecture and communication flow of the customer-support assistant.)*
+*Figure 1 — Simplified system architecture showing how a user request travels through Streamlit, Anthropic Claude, the Python backend, and the simulated database before the final response is returned to the user. (Logical architecture and communication flow of the customer-support assistant.)*  
+
+---  
+
+## Safety and Limitations
+
+This repository is intended for learning and experimentation.
+
+- The database contains fictional demonstration records.
+- Order and shipping information is not retrieved from real external services.
+- Refund and cancellation operations are simulated.
+- No real payment processor or logistics provider is connected.
+- The application should not be used to handle real customer information or transactions without additional security and operational controls.
+
+A production implementation would require persistent data storage, user authentication, authorization, secure API integrations, audit logging, error handling, and appropriate privacy controls.
+
+## Possible Future Improvements
+
+The project provides a starting point for further development. Potential extensions include:
+
+- Replacing the simulated database with a persistent database.
+- Integrating real shipping and tracking APIs.
+- Connecting to a payment provider in a controlled test environment.
+- Adding authentication and role-based authorization.
+- Introducing audit logs for sensitive operations.
+- Adding automated tests for backend functions and tool execution.
+- Improving observability, error handling, and conversation management.
+- Exploring more advanced agent workflows.
+
+## Learning Objectives
+
+This project is intended to demonstrate practical concepts in AI application development:
+
+- Connecting a large language model to a Python application.
+- Using Anthropic Claude's tool-calling capabilities.
+- Designing tool schemas and backend functions.
+- Separating language-model reasoning from business operations.
+- Building a conversational interface with Streamlit.
+- Introducing confirmation and eligibility checks for sensitive actions.
+
+This project uses Anthropic Claude through the Anthropic API and Streamlit to provide the conversational application interface.
 
 ---  
 
