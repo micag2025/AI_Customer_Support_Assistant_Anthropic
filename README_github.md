@@ -72,13 +72,20 @@ AI_Customer_Support_Assistent_Anthropic/
 
 ```
 
-## Installation
+## Installation (Getting started)  
+
+This section shows how to install dependencies, configure authentication, and run the full pipeline.
+
+### Prerequisites:
+
+Python 3.10+
+Anthropica Clauude API key
 
 ### 1. Clone the repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
-cd YOUR_REPOSITORY_FOLDER
+git clone https://github.com/micag2025/AI_Customer_Support_Assitent_Anthropic.git
+cd AI_Customer_Support_Assitent_Anthropic
 ```
 
 > _Note: Replace the example URL and folder name with your repository details._
@@ -133,7 +140,7 @@ http://localhost:8501
 
 Open that address in your browser to interact with the customer-support assistant.
 
-## Example Use Cases
+## Example Use Cases (UI Walkthrough & Example Runs)
 
 Once the application is running, you can try requests such as:
 
