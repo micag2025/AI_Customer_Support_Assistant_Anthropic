@@ -1,5 +1,17 @@
 # Building an AI-Powered Customer Support Assistant with Anthropic Claude  
 
+---    
+
+## option1 
+
+![cover_image1](/example_cover_image1.png)    
+
+---  
+
+## option2 
+
+![cover_image2](/example_cover_image2.png)    
+
 ---  
 
 ## Tags  
