@@ -2,8 +2,9 @@
 
 ---  
 
-## Tags
-`Anthropic Claude`, `API connection`, `tool calling`, `Streamlit`, `AI applications'    
+## Tags  
+
+`Generative AI`, `Anthropic Claude`, `Python`, `Streamlit`, `AI Agents`, `Tool Calling`, `Customer Support Automation`, (`Conversational AI`, `API Integration`)
 
 --- 
 
