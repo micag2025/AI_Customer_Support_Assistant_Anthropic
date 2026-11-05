@@ -20,7 +20,7 @@
 
 --- 
 
-## Introduction   
+## 1. Introduction   
 
 This is a practical AI engineering project showing how Anthropic Claude can interact with business tools to support customer service.
 
@@ -31,10 +31,8 @@ The publication should communicate three things:
 2. **The solution**: A Streamlit application connects Claude to Python functions that simulate these operations, with safeguards around sensitive actions.  
 3. **The learning value**: The project demonstrates tool use, backend integration, prompt design, and the steps needed to move from a prototype toward a production system.  
 
+---  
 
-
-## System architecture 
-Show how Streamlit, Claude, the Python backend, and the simulated database communicate.
 ## 2. System Architecture
 
 The application is organized into four main components: a **Streamlit user interface**, the **Anthropic Claude language model**, a **Python backend**, and a **simulated database**.
