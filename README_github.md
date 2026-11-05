@@ -151,7 +151,7 @@ pkill -f TO BE VERIFIED
 
 **Web UI**   
 
-![Web_UI](Screenshots/Screenshot_14-10-2026_18413_localhost.jpeg)
+![Web_UI](Screenshots/Screenshot_Interface.jpeg)
 
 ---  
 
