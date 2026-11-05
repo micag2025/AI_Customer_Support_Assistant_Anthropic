@@ -33,7 +33,7 @@ The publication should communicate three things:
 
 ---    
 
-## Who Can Benefit from This Application?  (Potentital Users)  
+## Who Can Benefit from This Application?  (Potential Users)  
 
 This application could be useful for:  
 - **Customer support agents** – to handle routine customer inquiries.  
