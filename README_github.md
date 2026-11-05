@@ -355,7 +355,7 @@ This project uses Anthropic Claude through the Anthropic API and Streamlit to pr
 ---
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License. See the [LICENSE file](/LICENSE.md) for details.
 
 ---  
 
