@@ -234,7 +234,7 @@ Show order lookup, shipping-status inquiries, cancellations, and refund eligibil
 
 The Streamlit interface features a dark-themed layout with a sidebar for order tracking, customer lookups, refunds, and cancellations. The main area provides a chat input for users to interact with the AI assistant. A demo notice highlights that all records and transactions are simulated.
 
-![Web_UI](Screenshots/Screenshot_14-10-2026_18413_localhost.jpeg)  
+![Web_UI](Screenshots/Screenshot_Interface.jpeg)  
 
 ---
 
