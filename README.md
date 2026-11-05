@@ -72,31 +72,72 @@ The database is intentionally simulated so that the application can demonstrate 
 
 ### 2.2. Communication Between Components
 
-The following diagram illustrates the main communication flow:
+The following diagram illustrates the main communication flow:  
 
-```mermaid
-flowchart TD
-    U["User"]
-    S["Streamlit UI<br/>app.py"]
-    C["Anthropic Claude API"]
-    B["Python Backend<br/>support_backend.py"]
-    T["Tool Definitions and Dispatcher"]
-    D[("Simulated Database<br/>Customers, Orders, Shipping Events")]
 
-    U -->|"1. Natural-language request"| S
-    S -->|"2. Conversation + tools"| C
-    C -->|"3. Tool-use request or response"| S
-    S -->|"4. Execute requested tool"| B
-    B --> T
-    T <-->|"5. Read or update data"| D
-    T -->|"6. Tool result"| B
-    B -->|"7. Return tool result"| S
-    S -->|"8. Tool result + conversation"| C
-    C -->|"9. Final natural-language response"| S
-    S -->|"10. Display response"| U
-```
+        ┌──────────────────────────┐
+        │       User               │
+        │  Asks a support question │
+        └────────────┬─────────────┘
+                     │
+                     ▼
+        ┌──────────────────────────┐
+        │      Streamlit UI        │
+        │  Receives user request   │
+        └────────────┬─────────────┘
+                     │
+               Send request
+                     │
+                     ▼
+        ┌──────────────────────────┐
+        │     Anthropic Claude     │
+        │ Understands the request  │
+        │ Selects the required tool│
+        └────────────┬─────────────┘
+                     │
+                Tool request
+                     │
+                     ▼
+        ┌──────────────────────────┐
+        │      Python Backend      │
+        │   Executes the tool      │
+        │   Applies business rules │
+        └────────────┬─────────────┘
+                     │
+                Read / Update
+                     │
+                     ▼
+        ┌──────────────────────────┐
+        │    Simulated Database    │
+        │   Customers              │
+        │   Orders                 │
+        │   Shipping Events        │
+        └────────────┬─────────────┘
+                     │
+                Return data
+                     │
+                     ▼
+        ┌──────────────────────────┐
+        │      Python Backend      │
+        │   Returns tool result    │
+        └────────────┬─────────────┘
+                     │
+                Tool result
+                     ▼
+        ┌──────────────────────────┐
+        │     Anthropic Claude     │
+        │  Generates final answer  │
+        └────────────┬─────────────┘
+                     │
+                Final response
+                     ▼
+        ┌──────────────────────────┐
+        │       Streamlit UI       │
+        │   Displays response      │
+        └──────────────────────────┘
 
-*Figure 1 — Logical architecture and communication flow of the customer-support assistant.*
+
+*Figure 1 — Simplified system architecture showing how a user request travels through Streamlit, Anthropic Claude, the Python backend, and the simulated database before the final response is returned to the user. (Logical architecture and communication flow of the customer-support assistant.)*
 
 ### 2.3. Request and Tool-Execution Workflow
 
