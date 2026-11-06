@@ -134,7 +134,7 @@ Create a `.env` file in the project root:
 ANTHROPIC_API_KEY=your_actual_anthropic_api_key
 ```
 
-If the backend requires a configurable model name, also add the corresponding model setting used by `support_backend.py`.
+Here the model 'claude-sonnet-5' has been selected and used. If the backend requires another configurable `model name`, also add the corresponding model setting used by `support_backend.py`. 
 
 ---  
 
