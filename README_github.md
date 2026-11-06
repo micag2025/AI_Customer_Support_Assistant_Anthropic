@@ -103,7 +103,7 @@ Based on the actual `support_backend.py` file, there are seven tools defined and
 | `issue_refund` | Records a simulated refund after eligibility has been verified and the customer has explicitly confirmed the action. | `order_id` |
 
 
-> _Note : Note: All seven tools are defined in the tools list and connected to their corresponding Python functions through process_tool_call()_
+> _Note : All seven tools are defined in the tools list and connected to their corresponding Python functions through process_tool_call()_
 
 Each tool is defined through Anthropic's tool-use interface and executed by the Python backend through a dedicated dispatcher. Claude determines when a tool is needed, while the backend validates and executes the requested operation. Sensitive actions, such as cancellations and refunds, are subject to eligibility checks and explicit customer confirmation. All operations use fictional, in-memory data; no real orders or payments are affected.
 
