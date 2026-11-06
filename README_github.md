@@ -88,7 +88,7 @@ AI_Customer_Support_Assistent_Anthropic/
 
 ```
 
-### Available Tools
+## Available Tools
 
 Based on the actual `support_backend.py` file, there are seven tools defined and implemented. Thus, the customer-support assistant uses seven tools to interact with the simulated customer-support database. These tools allow Claude to retrieve customer and order information, check shipping details, and perform eligible order-management operations.
 
@@ -107,9 +107,126 @@ Based on the actual `support_backend.py` file, there are seven tools defined and
 
 Each tool is defined through Anthropic's tool-use interface and executed by the Python backend through a dedicated dispatcher. Claude determines when a tool is needed, while the backend validates and executes the requested operation. Sensitive actions, such as cancellations and refunds, are subject to eligibility checks and explicit customer confirmation. All operations use fictional, in-memory data; no real orders or payments are affected.
 
+## How Tool Use Works
 
+Tool use allows Claude to interact with external functions and systems through the Python application. In this project, Claude can request operations such as retrieving customer information, checking order details, tracking shipments, and processing eligible order-management actions.
 
+The tools are defined in `support_backend.py` and passed to Claude through the Anthropic Messages API. Claude determines when a tool is needed and generates a structured request containing the tool name and its input arguments. The Python application receives the request, executes the corresponding function, and sends the result back to Claude.
 
+**Claude does not execute Python functions directly.** The application is responsible for executing the requested operations and controlling access to the simulated database.
+
+### Conceptual Flow
+
+```text
+User
+  ↓
+Streamlit application (app.py)
+  ↓
+Claude – Anthropic Messages API
+  ↓
+Structured tool request
+  ↓
+Python backend (support_backend.py)
+  ↓
+Tool execution
+  ↓
+Tool result
+  ↓
+Claude
+  ↓
+Final response
+  ↓
+Streamlit interface
+```
+
+### The Tool-Use Message Loop
+
+The application implements an iterative message exchange through the `run_assistant()` function in `app.py`.
+
+The process follows these steps:
+
+1. **User request:** The user submits a message through the Streamlit chat interface.
+2. **API request:** The application sends the conversation history, system prompt, and available tool definitions to Claude using `client.messages.create()`.
+3. **Claude response:** Claude determines whether it can answer directly or needs to request one or more tools.
+4. **Response handling:** The application checks `response.stop_reason` to determine what to do next.
+5. **Tool execution:** If Claude requests tools, the application processes each `tool_use` block and calls `process_tool_call()` from `support_backend.py`.
+6. **Tool results:** The application collects the results and sends them back to Claude in a new message.
+7. **Final response:** Claude processes the returned results and either requests additional tools or produces its final response.
+
+The application uses the following `stop_reason` values:
+
+| `stop_reason` | Meaning |
+|---|---|
+| `tool_use` | Claude is requesting one or more tools. |
+| `end_turn` | Claude has completed its response. |
+| Other values | The application raises an error because the response is not handled by the current implementation. |
+
+### Example: Processing a Tool Request
+
+For example, when a customer asks to look up their account using an email address, Claude may request the `get_user` tool.
+
+The request is represented by a `tool_use` content block. The application accesses its attributes directly:
+
+```python
+block.name   # "get_user"
+block.input  # {"key": "email", "value": "john@gmail.com"}
+block.id     # Identifier for this tool request
+```
+
+The application passes the tool name and input arguments to the backend dispatcher:
+
+```python
+result = process_tool_call(block.name, block.input)
+```
+
+In `support_backend.py`, the `process_tool_call()` function maps the requested tool name to the corresponding Python method:
+
+```python
+dispatch = {
+    "get_user": db.get_user,
+    "get_order_by_id": db.get_order_by_id,
+    "get_customer_orders": db.get_customer_orders,
+    "cancel_order": db.cancel_order,
+    "get_shipping_status": db.get_shipping_status,
+    "check_refund_eligibility": db.check_refund_eligibility,
+    "issue_refund": db.issue_refund,
+}
+
+return dispatch[tool_name](**tool_input)
+```
+
+The backend executes the selected method against the simulated database and returns its result.
+
+### Returning Tool Results to Claude
+
+After executing the requested tools, the application converts each result into JSON and creates a `tool_result` content block:
+
+```python
+result_text = json.dumps(result, ensure_ascii=False, default=str)
+
+tool_results.append({
+    "type": "tool_result",
+    "tool_use_id": block.id,
+    "content": result_text,
+})
+```
+
+The `tool_use_id` associates the result with the original tool request.
+
+The application then appends all collected tool results to the conversation as a user message:
+
+```python
+messages.append({
+    "role": "user",
+    "content": tool_results
+})
+```
+
+If a tool execution raises an exception, the application also returns an error result with `is_error=True`, allowing the tool failure to be reported to Claude.
+
+The `while True` loop in `run_assistant()` then calls Claude again with the updated conversation. This process continues until Claude returns `end_turn`, at which point the application extracts the text response and displays it in Streamlit.
+
+**Key principle:** Tool use is an iterative message exchange. Claude decides which tools to request, the Python backend executes them, and the results are returned to Claude so it can generate an informed response.
 
 ---
 ## Installation (Getting started)  
@@ -181,8 +298,10 @@ Open that address in your browser to interact with the customer-support assistan
 ## Stop the application  
 
 ```bash
-pkill -f TO BE VERIFIED
+Ctrl+C
 ```
+Press it in the terminal where Streamlit is running.
+
 ---  
 
 ## Example Use Cases (UI Walkthrough & Example Runs)  
