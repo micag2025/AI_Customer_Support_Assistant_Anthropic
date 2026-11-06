@@ -26,7 +26,7 @@ This is a practical AI engineering project showing how Anthropic Claude can inte
 
 The fictional database is not a drawback and it lets readers explore the architecture and test order lookup, cancellation, and refund workflows without needing access to real customer data or payment systems.
 
-The publication should communicate three things:
+The publication communicates three things:
 1. **The customer-support problem**: Customer-support teams spend time on repetitive requests such as order tracking, cancellations, and refund eligibility.  
 2. **The solution**: A Streamlit application connects Claude to Python functions that simulate these operations, with safeguards around sensitive actions.  
 3. **The learning value**: The project demonstrates tool use, backend integration, prompt design, and the steps needed to move from a prototype toward a production system.  
@@ -221,9 +221,8 @@ The architecture is deliberately simple and suitable for demonstrating the funda
 Overall, this architecture demonstrates how a conversational LLM can be connected to existing application logic, transforming a basic chatbot into an assistant capable of retrieving information and performing controlled operations.
 
 
-## Implementation 
-Explain the API connection, system prompt, tool definitions, and tool execution loop.  
-
+## Implementation   
+ 
 The application connects to the Anthropic Claude API using the Python SDK, with the API key securely loaded from an environment variable.   
 A system prompt guides Claude to act as a customer-support assistant, follow business rules, verify eligibility for actions such as cancellations and refunds, and request user confirmation before executing sensitive operations.  
 Tool definitions describe the functions available to Claude, including order lookup, shipping-status checks, cancellations, and refund-related operations.
@@ -243,8 +242,6 @@ The tool execution process follows these steps:
 ---  
 
 ## Demonstration (Examples Usage UI)  
-
-Show order lookup, shipping-status inquiries, cancellations, and refund eligibility checks with screenshots or a short video.
 
 ### Web UI   
 
@@ -292,8 +289,6 @@ The Streamlit interface features a dark-themed layout with a sidebar for order t
 
 ## Safety and Limitations (Limitations & Workarounds)  
 
-Explain confirmation requirements, fictional shipping records, in-memory storage, and simulated refunds.  
-
 The application includes basic safeguards but has some limitations due to its use as a demonstration project:
 
 - **User confirmation:** Sensitive operations, such as order cancellations and refunds, require eligibility checks and explicit user confirmation before execution.
@@ -306,11 +301,7 @@ These limitations are intentional and allow the project to demonstrate AI-powere
 
 ---  
 
-## Production roadmap  
-
-Describe how persistent storage, authentication, real shipping APIs, and payment integrations could extend the prototype.    
-
-### Production Roadmap
+## Production roadmap    
 
 The prototype could be extended into a production-ready customer-support application through the following improvements:
 
@@ -325,7 +316,7 @@ These enhancements would transform the prototype from a simulated demonstration 
 
 ## Contributing  
 
-Contributions are welcomed to improve the AI-Powered Customer Support Assistant with Anthropic Claude. Suggested workflow:
+Contributions are welcomed to improve the AI-Powered Customer Support Assistant with Anthropic Claude. The suggested workflow is the following:  
 
 1. Fork the GitHub repository    
 2. Create a feature branch:  
@@ -338,12 +329,6 @@ git checkout -b feat/your-feature
 4. Submit a Pull Request and describe your contribution.
    
 > _Note_ : Please follow the repository code style and add tests for major features.
-
----  
-
-## Conclusion  
-
-Summarize what readers can learn 
 
 ---  
 
