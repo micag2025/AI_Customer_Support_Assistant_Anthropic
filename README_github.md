@@ -88,6 +88,30 @@ AI_Customer_Support_Assistent_Anthropic/
 
 ```
 
+### Available Tools
+
+Based on the actual `support_backend.py` file, there are seven tools defined and implemented. Thus, the customer-support assistant uses seven tools to interact with the simulated customer-support database. These tools allow Claude to retrieve customer and order information, check shipping details, and perform eligible order-management operations.
+
+| Tool | Description | Required Input |
+|---|---|---|
+| `get_user` | Finds a customer using their email address, phone number, or username. | `key`, `value` |
+| `get_order_by_id` | Retrieves the details and current status of a specific order. | `order_id` |
+| `get_customer_orders` | Lists all orders associated with a customer. | `customer_id` |
+| `cancel_order` | Cancels an order if its status is Processing. | `order_id` |
+| `get_shipping_status` | Retrieves the carrier, tracking number, estimated delivery date, shipping status, and tracking events. | `order_id` |
+| `check_refund_eligibility` | Checks whether an order qualifies for a refund and calculates the potential refund amount. | `order_id` |
+| `issue_refund` | Records a simulated refund after eligibility has been verified and the customer has explicitly confirmed the action. | `order_id` |
+
+
+> _Note : Note: All seven tools are defined in the tools list and connected to their corresponding Python functions through process_tool_call()_
+
+Each tool is defined through Anthropic's tool-use interface and executed by the Python backend through a dedicated dispatcher. Claude determines when a tool is needed, while the backend validates and executes the requested operation. Sensitive actions, such as cancellations and refunds, are subject to eligibility checks and explicit customer confirmation. All operations use fictional, in-memory data; no real orders or payments are affected.
+
+
+
+
+
+---
 ## Installation (Getting started)  
 
 This section shows how to install dependencies, configure authentication, and run the full pipeline.
