@@ -5,7 +5,7 @@ A practical customer-support chatbot built with **Anthropic Claude, Python, and 
 
 ## Overview  
 
-This repository contains the full implementation of the publication **Building an AI-Powered Customer Support Assistant with Anthropic Claude**, published on the **Ready Tensor platform**.  A companion publication on the **Ready Tensor platform** presents the motivation, architecture, implementation, and lessons learned while developing this application.
+This repository contains the full implementation of the publication **Building an AI-Powered Customer Support Assistant with Anthropic Claude**, published on the **Ready Tensor platform**.  
 
 Customer-support teams frequently handle recurring requests such as:
 
@@ -94,8 +94,8 @@ This section shows how to install dependencies, configure authentication, and ru
 
 ### Prerequisites:
 
-Python 3.10+  
-Anthropic Clauude API key  
+- Python 3.10+    
+- Anthropic Clauude API key    
 
 ### 1. Clone the repository
 
@@ -103,8 +103,6 @@ Anthropic Clauude API key
 git clone https://github.com/micag2025/AI_Customer_Support_Assitent_Anthropic.git
 cd AI_Customer_Support_Assitent_Anthropic
 ```
-
-> _Note: Replace the example URL and folder name with your repository details._
 
 ### 2. Create a virtual environment
 
@@ -331,7 +329,7 @@ The project provides a starting point for further development. Potential extensi
 
 ## Contributing  
 
-Contributions are welcomed to improve the Anthropic Claude Customer Support Assistant. Suggested workflow:  
+Contributions are welcomed to improve the Anthropic Claude Customer Support Assistant. The suggested workflow is the following:    
 
 - Fork the GitHub repository  
 - Create a feature branch:
@@ -346,25 +344,11 @@ git checkout -b feat/your-feature
 
 ---  
 
-## Learning Objectives (PARAGRAPH TO BE MOVED )
-
-This project is intended to demonstrate practical concepts in AI application development:
-
-- Connecting a large language model to a Python application.
-- Using Anthropic Claude's tool-calling capabilities.
-- Designing tool schemas and backend functions.
-- Separating language-model reasoning from business operations.
-- Building a conversational interface with Streamlit.
-- Introducing confirmation and eligibility checks for sensitive actions.
-
-This project uses Anthropic Claude through the Anthropic API and Streamlit to provide the conversational application interface.
-
----  
-
 ## References  
 
 - [Claude Platform Docs](https://platform.claude.com/docs/en/home)    
-- [Anthropic](https://www.anthropic.com/)    
+- [Anthropic](https://www.anthropic.com/)
+- [Steamlit](https://docs.streamlit.io/) 
 - [Technical Evaluation Rubric](https://app.readytensor.ai/publications/technical-excellence-in-aiml-and-data-science-publications-an-evaluation-rubric-WsaE5uxLBqnH)  
 - [Engage and Inspire: Best Practices for Publishing on Ready Tensor](https://app.readytensor.ai/publications/engage-and-inspire-best-practices-for-publishing-on-ready-tensor-SBgkOyUsP8qQ)
 - [The Open Source Repository Guide: Best Practices for Sharing Your AI/ML and Data Science Projects](https://app.readytensor.ai/publications/best-practices-for-ai-project-code-repositories-0llldKKtn8Xb)
