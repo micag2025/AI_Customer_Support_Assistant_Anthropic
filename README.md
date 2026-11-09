@@ -340,41 +340,53 @@ The Streamlit interface features a dark-themed layout with a sidebar for order t
 
 ![Web_UI](Screenshots/Screenshot_Interface.jpeg)  
 
+---  
+
+### Order lookup  
+
+> Find the customer with email address john@gmail.com.  
+
+![Example1](Screenshots/Screenshot_Customer_Lookup.jpeg)    
+
 ---
 
-### Example 1 Order lookup
+### Order Information  (EVENTUALLY TO BE EXCLUDED AND SHOW UP ONLY IN THE RELATED GITHUB)    
 
-> Can you check the details of order 24601? 
+> What is the current status of order 13579?
 
-![Example1](Screenshots/Screenshot_14-10-2026_183433_localhost.jpeg)  
-
-> prompt to be enclosed 
-
-![Example2](Screenshots/Screenshot_14-10-2026_183833_localhost.jpeg)    
+![Example2](Screenshots/Screenshot_Order_Information.jpeg)    
 
 ---  
 
-### Example 2 Shipping information
+### Shipping and Tracking Information    
 
-> What is the shipping status of order 13579?
+> Where is my order 24601, and when is it expected to arrive? 
 
-![sceentshot to be enclosed]   
-
----  
-
-### Example 3 Refund eligibility
-
-> Can you check whether order 97531 is eligible for a refund?  
-
-![Example3](Screenshots/Screenshot_14-10-2026_184035_localhost.jpeg)    
+![Example3](Screenshots/Screenshot_Shipping_Tracking.jpeg)    
 
 ---  
 
-### Example 4 Order cancellation
+### Order Cancellation  (EVENTUALLY TO BE EXCLUDED AND SHOW UP ONLY IN THE RELATED GITHUB)      
 
-> I would like to cancel order 28164. Can you check whether that is possible?  
+> Can order 97531 still be cancelled?  
 
-![Example4](Screenshots/Screenshot_14-10-2026_184155_localhost.jpeg)
+![Example4](Screenshots/Screenshot_Order_Cancellation.jpeg)    
+
+---  
+
+### Refund Eligibility and Processing  
+
+> Am I eligible for a refund for order 86420?
+
+![Example5](Screenshots/Screenshot_Refund_Eligibility.jpeg)   
+
+---  
+
+### Error Handling and Negative Test Case : Missing Required Information   
+
+> Where is my order?
+
+![Example6](Screenshots/Screenshot_Missing_required_information.jpeg)    
 
 ---  
 
