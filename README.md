@@ -242,6 +242,30 @@ The tool execution process follows these steps:
 
 > _Note : This process can repeat if Claude needs to call additional tools before responding. Importantly, Claude does not access the database directly; all database operations are handled by the Python backend through the defined tools._
 
+
+## Testing the Application: Example Queries and Scenarios
+
+The application was tested using a range of natural-language queries designed to evaluate its main customer-support functionalities and its ability to handle unsuccessful operations. The tests cover customer lookup, order retrieval, shipment tracking, order cancellation, and refund management.
+
+Particular attention was also given to negative test scenarios, including unknown customers, non-existent or invalid order identifiers, cancellation requests for already shipped orders, and queries containing insufficient information.
+
+The following table summarizes the main testing scenarios and the expected behaviour of the assistant.
+
+| Testing scenario | Expected behaviour |
+|---|---|
+| Customer lookup | Retrieve customer information or report that no matching customer exists. |
+| Order retrieval | Return order details or indicate that the order cannot be found. |
+| Shipment tracking | Retrieve shipping status, delivery estimates, and tracking events. |
+| Order cancellation | Check order status, request explicit confirmation, and reject cancellation of orders that have already shipped. |
+| Refund eligibility | Check eligibility and provide the potential refund amount. |
+| Refund processing | Record a simulated refund only after eligibility verification and explicit customer confirmation. |
+| Invalid or unknown identifiers | Handle unsuccessful lookups and communicate the problem clearly. |
+| Missing information | Request the required information before invoking the corresponding tool. |
+
+These tests illustrate how the assistant combines natural-language understanding and tool selection with backend validation and business-rule enforcement. They also demonstrate that tool execution does not always result in a successful operation and that the application must handle such situations appropriately.
+
+For the complete set of example queries, expected responses, and instructions for reproducing these tests, please refer to the **Example Queries for Testing the Application** section of the project's GitHub repository.
+
 ---    
 
 ## Installation & Setup  
