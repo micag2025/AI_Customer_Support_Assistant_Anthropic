@@ -244,23 +244,26 @@ The tool execution process follows these steps:
 
 ---    
 
-## Installation  
+## Installation & Setup  
+
+This publication includes a complete GitHub code repository with all source code, configuration files, and test cases.  
 
 This section shows how to install dependencies, configure authentication, and run the full pipeline.
 
 ### Prerequisites:
 
 - Python 3.10+    
-- Anthropic Clauude API key    
+- Anthropic Clauude API key
+- Git – For cloning repository   
 
-### 1. Clone the repository
+### Clone the repository
 
 ```bash
 git clone https://github.com/micag2025/AI_Customer_Support_Assitent_Anthropic.git
 cd AI_Customer_Support_Assitent_Anthropic
 ```
 
-### 2. Create a virtual environment
+### Create a virtual environment
 
 On Windows:
 
@@ -269,13 +272,13 @@ py -m venv .venv
 .venv\Scripts\activate
 ```
 
-### 3. Install dependencies
+### Install dependencies
 
 ```bash
 python -m pip install streamlit anthropic python-dotenv
 ```
 
-### 4. Configure the Anthropic API key
+### Configure the Anthropic API key
 
 Create a `.env` file in the project root:
 
@@ -305,9 +308,9 @@ Open that address in your browser to interact with the customer-support assistan
 
 ---  
 
-## Demonstration (Examples Usage UI)  
+## Examples User Interface (UI) 
 
-### Web UI   
+### Main Interface 
 
 The Streamlit interface features a dark-themed layout with a sidebar for order tracking, customer lookups, refunds, and cancellations. The main area provides a chat input for users to interact with the AI assistant. A demo notice highlights that all records and transactions are simulated.
 
