@@ -390,37 +390,48 @@ Once the application is running, you can try requests such as:
 
 > Can you check the details of order 24601?
 
-![Example1](Screenshots/Screenshot_14-10-2026_183433_localhost.jpeg)    
+![Example1](Screenshots/Screenshot_Customer_Lookup.jpeg)    
 
 ---
 
-> QUERY TO BE ENCLOSED
+### Order Information
 
-![Example3](Screenshots/Screenshot_14-10-2026_184035_localhost.jpeg)    
+![Example2](Screenshots/Screenshot_Order_Information.jpeg)    
 
 ---  
 
-### Shipping information
+### Shipping and Tracking Information
 
 > What is the shipping status of order 13579?
 
-SCREENSHOT TO BE ENCLOSED   
+![Example3](Screenshots/Screenshot_Shipping_Tracking.jpeg)    
 
 ---  
 
-### Refund eligibility
-
-> Can you check whether order 97531 is eligible for a refund?
-
-![Example3](Screenshots/Screenshot_14-10-2026_184035_localhost.jpeg)    
-
----  
-
-### Order cancellation  
+### Order Cancellation  
 
 > I would like to cancel order 28164. Can you check whether that is possible?
 
-![Example4](Screenshots/Screenshot_14-10-2026_184155_localhost.jpeg)
+![Example4](Screenshots/Screenshot_Order_Cancellation.jpeg)    
+
+---  
+
+### Refund Eligibility and Processing
+
+![Example5](Screenshots/Screenshot_Refund_Eligibility.jpeg)   
+
+---  
+
+### Error Handling and Negative Test Case : Missing Required Information  
+
+![Example6](Screenshots/Screenshot_Missing_required_information.jpeg)    
+
+---  
+
+### Error Handling and Negative Test Case : Unknown Customer  
+
+![Example7](Screenshots/Screenshot_Unknown_customer.jpeg)   
+
 
 The actual outcome depends on the demo records and the business rules implemented in the backend.  
 
