@@ -72,11 +72,14 @@ It provides both a practical example of AI-assisted customer support and a learn
 AI_Customer_Support_Assistent_Anthropic/
 │
 ├── Screenshots/          # UI output examples
-│   ├── Screenshot_14-10-2026_183433_localhost.jpeg
-│   ├── Screenshot_14-10-2026_183833_localhost.jpeg
-│   ├── Screenshot_14-10-2026_184035_localhost.jpeg
-│   ├── Screenshot_14-10-2026_18413_localhost.jpeg
-│   └── Screenshot_14-10-2026_184155_localhost.jpeg
+│   ├── Screenshot_Interface.jpeg
+│   ├── Screenshot_Customer_Lookup.jpeg
+│   ├── Screenshot_Order_Information.jpeg
+│   ├── Screenshot_Shipping_Tracking.jpeg
+│   ├── Screenshot_Order_Cancellation.jpeg
+│   ├── Screenshot_Refund_Eligibility.jpeg
+│   ├── Screenshot_Unknown_customer.jpeg
+│   └── Screenshot_Missing_required_information.jpeg
 ├── .env_example          # Example environment configuration
 ├── app.py                # Streamlit user interface
 ├── helper.py
