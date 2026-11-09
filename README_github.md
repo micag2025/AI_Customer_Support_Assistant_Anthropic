@@ -245,7 +245,7 @@ The `while True` loop in `run_assistant()` then calls Claude again with the upda
 **Key principle:** Tool use is an iterative message exchange. Claude decides which tools to request, the Python backend executes them, and the results are returned to Claude so it can generate an informed response.
 
 ---
-## Installation (Getting started)  
+## Installation & Setup
 
 This section shows how to install dependencies, configure authentication, and run the full pipeline.
 
@@ -254,14 +254,14 @@ This section shows how to install dependencies, configure authentication, and ru
 - Python 3.10+    
 - Anthropic Clauude API key    
 
-### 1. Clone the repository
+### Clone the repository
 
 ```bash
 git clone https://github.com/micag2025/AI_Customer_Support_Assitent_Anthropic.git
 cd AI_Customer_Support_Assitent_Anthropic
 ```
 
-### 2. Create a virtual environment
+### Create a virtual environment
 
 On Windows:
 
@@ -277,13 +277,13 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-### 3. Install dependencies
+### Install dependencies
 
 ```bash
 python -m pip install streamlit anthropic python-dotenv
 ```
 
-### 4. Configure the Anthropic API key
+### Configure the Anthropic API key
 
 Create a `.env` file in the project root:
 
@@ -311,13 +311,11 @@ http://localhost:8501
 
 Open that address in your browser to interact with the customer-support assistant.  
 
-## Stop the application  
+To stop the application, in the terminal where Streamlit is running, press:
 
 ```bash
 Ctrl+C
 ```
-Press it in the terminal where Streamlit is running.
-
 ---  
 
 ## Example Use Cases (UI Walkthrough & Example Runs)  
