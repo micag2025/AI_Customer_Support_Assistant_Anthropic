@@ -318,6 +318,62 @@ Ctrl+C
 ```
 ---  
 
+## Example Queries for Testing the Application
+
+The following examples can be used to test the Streamlit customer-support assistant and explore its main functionalities. They cover both successful interactions and scenarios involving errors, incomplete requests, and business-rule restrictions.
+
+### 1. Customer Lookup
+- "Find the customer with email address john@gmail.com."
+- "Show me all orders associated with this customer."
+
+### 2. Order Information
+- "Retrieve the details of order 24601."
+- "What is the current status of order 13579?"
+
+### 3. Shipping and Tracking
+- "Where is my order 24601, and when is it expected to arrive?"
+- "Provide the latest tracking updates for order 54321."
+- "Has order 86420 been delivered?"
+
+### 4. Order Cancellation
+- "I would like to cancel order 13579. Is that possible?"
+- "Can order 97531 still be cancelled?"
+
+The assistant should check the order status and request explicit customer confirmation before attempting cancellation. Only orders with a *Processing* status can be cancelled.
+
+### 5. Refund Eligibility and Processing
+- "Am I eligible for a refund for order 86420?"
+- "Why is order 54321 not eligible for a refund?"
+- "I would like to request a refund for order 86420. Can you check its eligibility?"
+
+After the assistant confirms eligibility, reply:
+- "Yes, I confirm that I want to proceed with the refund."
+
+Refund processing requires an eligibility check and explicit customer confirmation. Refunds are recorded in the simulated database; no actual payment is processed.
+
+### 6. Error Handling and Negative Test Cases
+
+The following queries test how the assistant handles unsuccessful tool calls, invalid inputs, missing information, and business-rule restrictions.
+
+- **Unknown customer:** "Find the customer with email address unknown@example.com."  
+  Expected behaviour: The assistant reports that no matching customer was found.
+
+- **Unknown order:** "Retrieve the details of order 99999."  
+  Expected behaviour: The assistant explains that the order could not be found.
+
+- **Invalid order ID:** "Check the shipping status of order ABC-XYZ."  
+  Expected behaviour: The assistant reports that no matching order was found and asks the user to verify the order ID. The current backend does not implement a separate order-ID format validation.
+
+- **Cancellation of an already shipped order:** "I would like to cancel order 24601. Can you do that?"  
+  Expected behaviour: The backend rejects the cancellation because the order is already shipped. The assistant explains that only orders with a *Processing* status can be cancelled.
+
+- **Missing required information:** "Where is my order?"  
+  Expected behaviour: The assistant asks the user to provide an order ID before attempting to retrieve shipping information.
+
+These examples demonstrate how the assistant interprets natural-language requests, selects and invokes the appropriate tools, retrieves or updates information, and handles unsuccessful operations. They also highlight the importance of backend validation, business-rule enforcement, and clear communication when a requested action cannot be completed.
+
+---
+
 ## Example Use Cases (UI Walkthrough & Example Runs)  
 
 ### Web UI  
