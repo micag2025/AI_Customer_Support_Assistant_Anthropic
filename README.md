@@ -242,6 +242,74 @@ The tool execution process follows these steps:
 
 > _Note : This process can repeat if Claude needs to call additional tools before responding. Importantly, Claude does not access the database directly; all database operations are handled by the Python backend through the defined tools._
 
+---    
+
+## Installation (Getting started)  
+
+This section shows how to install dependencies, configure authentication, and run the full pipeline.
+
+### Prerequisites:
+
+- Python 3.10+    
+- Anthropic Clauude API key    
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/micag2025/AI_Customer_Support_Assitent_Anthropic.git
+cd AI_Customer_Support_Assitent_Anthropic
+```
+
+### 2. Create a virtual environment
+
+On Windows:
+
+```bash
+py -m venv .venv
+.venv\Scripts\activate
+```
+
+### 3. Install dependencies
+
+```bash
+python -m pip install streamlit anthropic python-dotenv
+```
+
+### 4. Configure the Anthropic API key
+
+Create a `.env` file in the project root:
+
+```env
+ANTHROPIC_API_KEY=your_actual_anthropic_api_key
+```
+
+Here the model 'claude-sonnet-5' has been selected and used. If the backend requires another configurable `model name`, also add the corresponding model setting used by `support_backend.py`. 
+
+---  
+
+## Running the Application
+
+From the project directory, execute:
+
+```bash
+python -m streamlit run app.py
+```
+
+Streamlit will start the application and provide a local URL, normally:
+
+```text
+http://localhost:8501
+```
+
+Open that address in your browser to interact with the customer-support assistant.  
+
+## Stop the application  
+
+```bash
+Ctrl+C
+```
+Press it in the terminal where Streamlit is running.
+
 ---  
 
 ## Demonstration (Examples Usage UI)  
