@@ -388,8 +388,6 @@ Once the application is running, you can try requests such as:
 
 ### Order lookup
 
-> Can you check the details of order 24601?
-
 ![Example1](Screenshots/Screenshot_Customer_Lookup.jpeg)    
 
 ---
@@ -402,15 +400,11 @@ Once the application is running, you can try requests such as:
 
 ### Shipping and Tracking Information
 
-> What is the shipping status of order 13579?
-
 ![Example3](Screenshots/Screenshot_Shipping_Tracking.jpeg)    
 
 ---  
 
 ### Order Cancellation  
-
-> I would like to cancel order 28164. Can you check whether that is possible?
 
 ![Example4](Screenshots/Screenshot_Order_Cancellation.jpeg)    
 
