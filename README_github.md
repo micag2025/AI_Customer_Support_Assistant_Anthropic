@@ -88,6 +88,22 @@ AI_Customer_Support_Assistent_Anthropic/
 
 ```
 
+## Dataset Overview
+
+The project uses a fictional, in-memory customer-support dataset embedded directly in the `support_backend.py` file. It consists of 10 customer records and 12 order records.
+
+The dataset includes:
+
+- **Customer information:** Customer IDs, names, email addresses, phone numbers, and usernames.
+- **Order details:** Order IDs, product names, quantities, unit prices, and order statuses.
+- **Shipping information:** Shipping status, carrier (UPS, USPS, and FedEx), tracking numbers, estimated delivery dates, and tracking events.
+- **Refund information:** Refund status, eligibility, and simulated refund amounts in USD.
+
+The data supports demonstrations of customer lookup, order management, shipment tracking, order cancellation, and refund workflows.
+
+**Note:** All records are fictional and stored in memory. No separate dataset file is required, and no real shipping or payment services are connected.
+
+---
 ## Available Tools
 
 Based on the actual `support_backend.py` file, there are seven tools defined and implemented. Thus, the customer-support assistant uses seven tools to interact with the simulated customer-support database. These tools allow Claude to retrieve customer and order information, check shipping details, and perform eligible order-management operations.
