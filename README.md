@@ -49,7 +49,7 @@ This application is designed to demonstrate how AI-powered customer support can 
 
 ---  
 
-## 2. System Architecture
+## System Architecture
 
 The application is organized into four main components: a **Streamlit user interface**, the **Anthropic Claude language model**, a **Python backend**, and a **simulated database**.
 
@@ -57,7 +57,7 @@ Each component has a specific responsibility. Streamlit manages the interaction 
 
 A central design principle is that the language model does not directly access or modify the database. Instead, it communicates with the Python application through a structured tool-calling mechanism. This keeps data access and business operations under the control of the backend.
 
-### 2.1. Main Components
+### Main Components
 
 **1. Streamlit — User Interface**
 
@@ -100,7 +100,7 @@ The backend uses this data to answer customer questions and perform the operatio
 The database is intentionally simulated so that the application can demonstrate the interaction between an LLM and business operations without accessing real customer information or external payment and logistics services.
 
 
-### 2.2. Communication Between Components
+### Communication Between Components
 
 The following diagram illustrates the main communication flow:  
 
@@ -169,7 +169,7 @@ The following diagram illustrates the main communication flow:
 
 *Figure 1 — Simplified system architecture showing how a user request travels through Streamlit, Anthropic Claude, the Python backend, and the simulated database before the final response is returned to the user. (Logical architecture and communication flow of the customer-support assistant.)*
 
-### 2.3. Request and Tool-Execution Workflow
+### Request and Tool-Execution Workflow
 
 A typical interaction follows these steps:
 
@@ -191,7 +191,7 @@ A typical interaction follows these steps:
 
 This interaction illustrates the distinction between language understanding and application execution: Claude determines what information or operation is needed, while the Python backend performs the actual work.
 
-### 2.4. Handling Sensitive Operations
+### Handling Sensitive Operations
 
 Not all support requests are simple information queries. Some requests can change the state of an order, particularly cancellations and refunds.
 
@@ -209,7 +209,7 @@ The general workflow is therefore:
 
 This approach is important because an LLM should not be treated as the authority for modifying business records. The backend remains responsible for enforcing the application's operational rules.
 
-### 2.5. Architectural Design Considerations
+### Architectural Design Considerations
 
 The separation of the user interface, language model, backend logic, and data layer provides several advantages:
 
@@ -244,7 +244,7 @@ The tool execution process follows these steps:
 
 ---    
 
-## Installation (Getting started)  
+## Installation  
 
 This section shows how to install dependencies, configure authentication, and run the full pipeline.
 
@@ -302,13 +302,6 @@ http://localhost:8501
 ```
 
 Open that address in your browser to interact with the customer-support assistant.  
-
-## Stop the application  
-
-```bash
-Ctrl+C
-```
-Press it in the terminal where Streamlit is running.
 
 ---  
 
