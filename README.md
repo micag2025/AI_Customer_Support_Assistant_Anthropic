@@ -20,7 +20,7 @@
 
 --- 
 
-## 1. Introduction   
+## TL;DR
 
 This is a practical AI engineering project showing how Anthropic Claude can interact with business tools to support customer service.
 
