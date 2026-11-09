@@ -91,13 +91,14 @@ The assistant uses seven tools to support common customer-service tasks. All too
 
 **4. Simulated Database — Customer and Order Information**
 
-The simulated database provides the data used by the demonstration application.
+The simulated database provides the data used by the demonstration application. It (is embedded directly in the `support_backend.py` file) and consists of 10 fictional customer records and 12 order records.
 
-It contains fictional customer records, orders, and shipping information. The backend uses this data to answer questions and perform the operations supported by the prototype.
+It contains customer contact details, product and order information, shipping statuses, carrier and tracking details, estimated delivery dates, and tracking events. It also includes refund status and eligibility information.
 
-For example, an order lookup retrieves the relevant order record, while a shipping-status request uses the associated shipping information and tracking events.
+The backend uses this data to answer customer questions and perform the operations supported by the prototype. For example, an order lookup retrieves the relevant order record, while a shipping-status request uses the associated shipping information and tracking events.
 
 The database is intentionally simulated so that the application can demonstrate the interaction between an LLM and business operations without accessing real customer information or external payment and logistics services.
+
 
 ### 2.2. Communication Between Components
 
