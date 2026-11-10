@@ -10,7 +10,7 @@
 
 ## option2 
 
-![cover_image2](/AI_Customer_Support_Flow_ Diagram_1.png)    
+![cover_image2](/AI_Customer_Support_Flow_Diagram_1.png)    
 
 ---  
 
