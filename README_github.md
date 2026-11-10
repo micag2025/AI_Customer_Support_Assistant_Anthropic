@@ -499,15 +499,16 @@ git checkout -b feat/your-feature
 
 ---  
 
-## References  
+## References    
 
-- [Claude Platform Docs](https://platform.claude.com/docs/en/home)    
+- [Claude Platform documentation](https://platform.claude.com/docs/en/home)    
 - [Anthropic](https://www.anthropic.com/)
-- [Steamlit](https://docs.streamlit.io/) 
+- [Streamlit documentation](https://docs.streamlit.io/)    
 - [Technical Evaluation Rubric](https://app.readytensor.ai/publications/technical-excellence-in-aiml-and-data-science-publications-an-evaluation-rubric-WsaE5uxLBqnH)  
 - [Engage and Inspire: Best Practices for Publishing on Ready Tensor](https://app.readytensor.ai/publications/engage-and-inspire-best-practices-for-publishing-on-ready-tensor-SBgkOyUsP8qQ)
-- [The Open Source Repository Guide: Best Practices for Sharing Your AI/ML and Data Science Projects](https://app.readytensor.ai/publications/best-practices-for-ai-project-code-repositories-0llldKKtn8Xb)
+- [The Open Source Repository Guide](https://app.readytensor.ai/publications/best-practices-for-ai-project-code-repositories-0llldKKtn8Xb)
 - [Markdown for Machine Learning Projects: A Comprehensive Guide](https://app.readytensor.ai/publications/markdown-for-machine-learning-projects-a-comprehensive-guide-LX9cbIx7mQs9)  
+
 
 ---
 
