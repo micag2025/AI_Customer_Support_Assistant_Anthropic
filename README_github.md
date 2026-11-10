@@ -518,7 +518,7 @@ This project is licensed under the [MIT License](/LICENSE).
 ---  
 
 ## Contact
-If you encounter bugs, have questions, or want to request a new feature, please open an issue on this repository.
+If you encounter bugs, have questions, or want to request a new feature, please open an [issue on this repository](https://github.com/micag2025/AI_Customer_Support_Assitent_Anthropic/issues/).
 
 ---  
 
