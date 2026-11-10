@@ -518,13 +518,13 @@ This project is licensed under the [MIT License](/LICENSE).
 ---  
 
 ## Contact
-If you encounter bugs, have questions, or want to request a new feature, please open an [issue on this repository](https://github.com/micag2025/AI_Customer_Support_Assitent_Anthropic/issues/).
+If you encounter bugs, have questions, or want to request a new feature, please open an [issue](https://github.com/micag2025/AI_Customer_Support_Assitent_Anthropic/issues/) on this repository.
 
 ---  
 
 ## Acknowledgements  
 
-TO BE DRAFTED  
+An acknowledgement to Ready Tensor developer community for creating a vibrant ecosystem where AI professionals can share projects, insights, and innovations, playing a meaningful role in accelerating the advancement of AI technology and in shaping practical, real-world developer tools such as this project.
 
 ---
 
