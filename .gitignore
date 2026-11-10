@@ -1,4 +1,4 @@
-# Environment / secrets
+# Environment variables and API keys
 .env
 .env.*
 !.env_example
@@ -7,16 +7,14 @@
 __pycache__/
 *.py[cod]
 *$py.class
-*.egg-info/
-.eggs/
-build/
-dist/
 
 # Virtual environments
 .venv/
 venv/
 env/
-ENV/
+
+# Streamlit
+.streamlit/secrets.toml
 
 # Jupyter
 .ipynb_checkpoints/
@@ -26,7 +24,9 @@ node_modules/
 
 # OS / editor
 .DS_Store
-Thumbs.db
+Thumbs.db  
+
+# IDE and editor files
 .idea/
 .vscode/
 
