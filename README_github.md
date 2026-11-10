@@ -1,5 +1,4 @@
-
-# Building an AI-Powered Customer Support Assistant with Anthropic Claude  
+# AI-Powered Customer Support Assistant with Anthropic Claude
 
 A practical customer-support chatbot built with **Anthropic Claude, Python, and Streamlit**. The application uses Claude's tool-calling capabilities to retrieve customer and order information and execute controlled support operations through a Python backend.
 
