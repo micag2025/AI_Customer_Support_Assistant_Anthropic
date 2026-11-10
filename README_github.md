@@ -106,7 +106,8 @@ The data supports demonstrations of customer lookup, order management, shipment 
 
 **Note:** All records are fictional and stored in memory. No separate dataset file is required, and no real shipping or payment services are connected.
 
----
+---  
+
 ## Available Tools
 
 Based on the actual `support_backend.py` file, there are seven tools defined and implemented. Thus, the customer-support assistant uses seven tools to interact with the simulated customer-support database. These tools allow Claude to retrieve customer and order information, check shipping details, and perform eligible order-management operations.
@@ -245,7 +246,11 @@ If a tool execution raises an exception, the application also returns an error r
 
 The `while True` loop in `run_assistant()` then calls Claude again with the updated conversation. This process continues until Claude returns `end_turn`, at which point the application extracts the text response and displays it in Streamlit.
 
-**Key principle:** Tool use is an iterative message exchange. Claude decides which tools to request, the Python backend executes them, and the results are returned to Claude so it can generate an informed response.
+**Key principle:** Tool use is an iterative message exchange. Claude decides which tools to request, the Python backend executes them, and the results are returned to Claude so it can generate an informed response.  
+
+## Streamlit application 
+
+The `app.py` file is the main application entry point. It builds the user interface using Streamlit, manages the chat interaction between the user and Anthropic Claude, and handles the tool-calling workflow. It sends user messages and available tool definitions to Claude, processes Claude’s responses, and passes requested operations to the Python backend (support_backend.py). Finally, it displays the assistant’s responses in the chat interface, allowing users to interact with the customer-support assistant.
 
 ---
 ## Installation & Setup
@@ -319,7 +324,21 @@ To stop the application, in the terminal where Streamlit is running, press:
 ```bash
 Ctrl+C
 ```
----  
+---    
+
+## How It Works
+
+The application separates the conversational layer from the business logic.
+
+1. The user enters a request through the Streamlit chat interface.
+2. The application sends the conversation and available tool definitions to Anthropic Claude.
+3. Claude interprets the request and determines whether one of the available tools is needed.
+4. If a tool is requested, the Python backend executes the corresponding function.
+5. The tool result is returned to Claude.
+6. Claude uses the result to formulate a response for the user.
+7. For sensitive operations, the application follows its confirmation and eligibility checks before executing the action.
+
+---
 
 ## Example Queries for Testing the Application
 
@@ -433,91 +452,6 @@ Once the application is running, you can try requests such as:
 The actual outcome depends on the demo records and the business rules implemented in the backend.  
 
 ---
-
-## How It Works
-
-The application separates the conversational layer from the business logic.
-
-1. The user enters a request through the Streamlit chat interface.
-2. The application sends the conversation and available tool definitions to Anthropic Claude.
-3. Claude interprets the request and determines whether one of the available tools is needed.
-4. If a tool is requested, the Python backend executes the corresponding function.
-5. The tool result is returned to Claude.
-6. Claude uses the result to formulate a response for the user.
-7. For sensitive operations, the application follows its confirmation and eligibility checks before executing the action.
-
-This architecture illustrates how an LLM can interact with application functionality without directly accessing or modifying the underlying database.  
-
-## Architecture structure   
-
-The following diagram illustrates the main communication flow:  
-
-
-        ┌──────────────────────────┐
-        │       User               │
-        │  Asks a support question │
-        └────────────┬─────────────┘
-                     │
-                     ▼
-        ┌──────────────────────────┐
-        │      Streamlit UI        │
-        │  Receives user request   │
-        └────────────┬─────────────┘
-                     │
-               Send request
-                     │
-                     ▼
-        ┌──────────────────────────┐
-        │     Anthropic Claude     │
-        │ Understands the request  │
-        │ Selects the required tool│
-        └────────────┬─────────────┘
-                     │
-                Tool request
-                     │
-                     ▼
-        ┌──────────────────────────┐
-        │      Python Backend      │
-        │   Executes the tool      │
-        │   Applies business rules │
-        └────────────┬─────────────┘
-                     │
-                Read / Update
-                     │
-                     ▼
-        ┌──────────────────────────┐
-        │    Simulated Database    │
-        │   Customers              │
-        │   Orders                 │
-        │   Shipping Events        │
-        └────────────┬─────────────┘
-                     │
-                Return data
-                     │
-                     ▼
-        ┌──────────────────────────┐
-        │      Python Backend      │
-        │   Returns tool result    │
-        └────────────┬─────────────┘
-                     │
-                Tool result
-                     ▼
-        ┌──────────────────────────┐
-        │     Anthropic Claude     │
-        │  Generates final answer  │
-        └────────────┬─────────────┘
-                     │
-                Final response
-                     ▼
-        ┌──────────────────────────┐
-        │       Streamlit UI       │
-        │   Displays response      │
-        └──────────────────────────┘
-
-
-*Figure 1 — Simplified system architecture showing how a user request travels through Streamlit, Anthropic Claude, the Python backend, and the simulated database before the final response is returned to the user. (Logical architecture and communication flow of the customer-support assistant.)*  
-
----  
 
 ## Safety and Limitations
 
