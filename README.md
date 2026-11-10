@@ -35,17 +35,16 @@ The publication communicates three things:
 
 ## Potential Users and Applications
 
-This application is designed to demonstrate how AI-powered customer support can assist different types of users and organizations, including:
+This application is designed to demonstrate how AI-powered customer support can assist different types of users and organizations, including: (This demonstration may be useful to:)
 
-- **Customer support agents:** To handle routine customer inquiries and streamline support activities.
-- **E-commerce businesses:** To assist customers with order management, shipping updates, and refund requests.
-- **Online retailers:** To automate basic post-purchase customer support.
-- **Small and medium-sized businesses (SMBs):** To explore AI-assisted customer service without requiring a large support team.
-- **Customer service managers:** To understand how AI can improve support workflows and operational efficiency.
-- **AI developers and students:** To learn how to build AI assistants using Anthropic Claude, Python, and tool calling.
-- **Software developers:** To explore the integration of large language models (LLMs) with external tools and business applications.
- 
-> _Note: The current prototype is intended for demonstration and learning purposes, not direct use in live customer-support operations._  
+- **Customer-support agents** exploring ways to streamline routine inquiries.  
+- **E-commerce businesses and online retailers** considering AI-assisted order support.  
+- **Small and medium-sized businesses** learning about customer-service automation.  
+- **Customer-service managers** examining how tool-based assistants fit into support workflows.  
+- **AI developers and students** learning about Claude, Python, Streamlit, and tool calling.  
+- **Software developers** exploring how language models can interact with application functions.  
+
+> Important: The current prototype is for demonstration and learning. It is not intended for direct use in live customer-support operations. 
 
 ---  
 
@@ -243,28 +242,26 @@ The tool execution process follows these steps:
 > _Note : This process can repeat if Claude needs to call additional tools before responding. Importantly, Claude does not access the database directly; all database operations are handled by the Python backend through the defined tools._
 
 
-## Testing the Application: Example Queries and Scenarios
+## Testing the Application  
 
-The application was tested using a range of natural-language queries designed to evaluate its main customer-support functionalities and its ability to handle unsuccessful operations. The tests cover customer lookup, order retrieval, shipment tracking, order cancellation, and refund management.
+The application was tested using a range of natural-language queries designed to evaluate its main customer-support functionalities and its ability to handle unsuccessful operations. The tests cover customer lookup, order retrieval, shipment tracking, order cancellation, and refund management. Particular attention was also given to negative test scenarios, including unknown customers, non-existent or invalid order identifiers, cancellation requests for already shipped orders, and queries containing insufficient information.  
 
-Particular attention was also given to negative test scenarios, including unknown customers, non-existent or invalid order identifiers, cancellation requests for already shipped orders, and queries containing insufficient information.
+The project’s example scenarios are intended to demonstrate both **successful workflows** and **cases where the assistant should not proceed**. They include (The following table summarizes the main testing scenarios and the expected behaviour of the assistant):  
 
-The following table summarizes the main testing scenarios and the expected behaviour of the assistant.
-
-| Testing scenario | Expected behaviour |
+| (Testing) Scenario | Expected behavior |
 |---|---|
-| Customer lookup | Retrieve customer information or report that no matching customer exists. |
-| Order retrieval | Return order details or indicate that the order cannot be found. |
-| Shipment tracking | Retrieve shipping status, delivery estimates, and tracking events. |
-| Order cancellation | Check order status, request explicit confirmation, and reject cancellation of orders that have already shipped. |
-| Refund eligibility | Check eligibility and provide the potential refund amount. |
-| Refund processing | Record a simulated refund only after eligibility verification and explicit customer confirmation. |
-| Invalid or unknown identifiers | Handle unsuccessful lookups and communicate the problem clearly. |
-| Missing information | Request the required information before invoking the corresponding tool. |
+| Customer lookup | Return matching customer information or explain that no matching customer exists. |
+| Order lookup | Return order details or indicate that the order could not be found. |
+| Shipment tracking | Show available shipping status, delivery estimates, and tracking events. |
+| Order cancellation | Check the order status, explain applicable conditions, and require confirmation before a simulated cancellation. |
+| Refund eligibility | Check eligibility and provide the potential refund information available in the application. |
+| Refund processing | Verify eligibility and require confirmation before recording a simulated refund. |
+| Invalid or unknown identifiers | Explain that the requested customer or order could not be found. |
+| Missing information | Ask the user for the information needed to continue. |
 
-These tests illustrate how the assistant combines natural-language understanding and tool selection with backend validation and business-rule enforcement. They also demonstrate that tool execution does not always result in a successful operation and that the application must handle such situations appropriately.
+(These tests illustrate how the assistant combines natural-language understanding and tool selection with backend validation and business-rule enforcement. They also demonstrate that tool execution does not always result in a successful operation and that the application must handle such situations appropriately.)
 
-For the complete set of example queries, expected responses, and instructions for reproducing these tests, please refer to the **Example Queries for Testing the Application** section of the project's GitHub repository.
+These scenarios illustrate the roles of tool selection, backend validation, and business-rule enforcement. For additional example queries and expected responses, see the project’s **Example Queries for Testing the Application** section in the project's GitHub repository.  
 
 ---    
 
@@ -276,9 +273,9 @@ This section shows how to install dependencies, configure authentication, and ru
 
 ### Prerequisites:
 
-- Python 3.10+    
-- Anthropic Clauude API key
-- Git – For cloning repository   
+- Python 3.10 or later  
+- An Anthropic API key  
+- Git  
 
 ### Clone the repository
 
@@ -287,13 +284,19 @@ git clone https://github.com/micag2025/AI_Customer_Support_Assitent_Anthropic.gi
 cd AI_Customer_Support_Assitent_Anthropic
 ```
 
-### Create a virtual environment
+### Create and activate a virtual environment  
 
-On Windows:
+**Windows:**
 
 ```bash
 py -m venv .venv
 .venv\Scripts\activate
+```
+**macOS or Linux:**  
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
 ```
 
 ### Install dependencies
@@ -322,17 +325,19 @@ From the project directory, execute:
 python -m streamlit run app.py
 ```
 
-Streamlit will start the application and provide a local URL, normally:
+Streamlit will provide a local URL, typically:
 
 ```text
 http://localhost:8501
 ```
 
-Open that address in your browser to interact with the customer-support assistant.  
+Open the URL in a browser to interact with the customer-support assistant.  
 
 ---  
 
-## Examples User Interface (UI) 
+## Examples user interface  
+
+The screenshots below illustrate the application’s interface and example support workflows.  
 
 ### Main Interface 
 
@@ -342,7 +347,7 @@ The Streamlit interface features a dark-themed layout with a sidebar for order t
 
 ---  
 
-### Order lookup  
+### Customer lookup    
 
 > Find the customer with email address john@gmail.com.  
 
@@ -358,7 +363,7 @@ The Streamlit interface features a dark-themed layout with a sidebar for order t
 
 ---  
 
-### Shipping and Tracking Information    
+### Shipping and tracking    
 
 > Where is my order 24601, and when is it expected to arrive? 
 
@@ -374,7 +379,7 @@ The Streamlit interface features a dark-themed layout with a sidebar for order t
 
 ---  
 
-### Refund Eligibility and Processing  
+### Refund Eligibility (and Processing)  
 
 > Am I eligible for a refund for order 86420?
 
@@ -382,7 +387,7 @@ The Streamlit interface features a dark-themed layout with a sidebar for order t
 
 ---  
 
-### Error Handling and Negative Test Case : Missing Required Information   
+### (Error Handling and Negative Test Case:) Missing required information   
 
 > Where is my order?
 
@@ -390,66 +395,69 @@ The Streamlit interface features a dark-themed layout with a sidebar for order t
 
 ---  
 
-## Safety and Limitations (Limitations & Workarounds)  
+## Safety and Limitations (and Workarounds)    
 
-The application includes basic safeguards but has some limitations due to its use as a demonstration project:
+The project includes basic safeguards to illustrate responsible tool use, but it is not production-ready: (Therefore, limitations are related to:)
 
-- **User confirmation:** Sensitive operations, such as order cancellations and refunds, require eligibility checks and explicit user confirmation before execution.
-- **Fictional shipping records:** Shipping information, tracking numbers, and delivery events are simulated and do not represent real shipments.
-- **In-memory storage:** Customer and order data are stored in memory. Any changes made during a session are lost when the application restarts.
-- **Simulated refunds:** Refund operations demonstrate the workflow but do not process real payments or transfer money.
-- **Production requirements:** A real-world deployment would require persistent database storage, integration with actual shipping and payment services, and stronger security and access controls.
+- **Fictional records**: Customer, order, and shipping details are simulated.  
+- **In-memory storage**: Changes are lost when the application restarts.  
+- **Simulated transactions**: Refunds do not transfer money, and shipping details are not retrieved from a live carrier.  
+- **Demonstration safeguards**: Confirmation prompts illustrate a workflow; they do not replace authentication or authorization.  
+- **Production security**: A deployed service would need secure data handling, access controls, monitoring, and robust validation.  
+- **External integrations**: A real service would need persistent storage and carefully designed integrations with shipping and payment providers.  
 
-These limitations are intentional and allow the project to demonstrate AI-powered customer-support workflows without interacting with real customer accounts or financial transactions.
+_Note: These limitations are intentional and allow the project to demonstrate AI-powered customer-support workflows without interacting with real customer accounts or financial transactions._ 
 
 ---  
 
 ## Production roadmap    
 
-The prototype could be extended into a production-ready customer-support application through the following improvements:
+Possible next steps for evolving the prototype into a more reliable, secure, and practical customer-support application include (The prototype could be extended into a production-ready customer-support application through the following improvements):
 
-- **Persistent database storage:** Replace the in-memory simulated database with a persistent database to retain customer information, orders, and transaction history across application sessions.
-- **User authentication and access control:** Introduce secure user login and role-based permissions to protect customer data and ensure that only authorized users can perform sensitive operations.
-- **Real shipping API integration:** Connect to shipping providers such as UPS, USPS, or FedEx to retrieve live tracking information and delivery updates.
-- **Payment gateway integration:** Integrate secure payment services to support actual refund processing and transaction management.
+- **Replace the in-memory data with a persistent database** to retain customer information, orders, and transaction history across application sessions.    
+- **Add secure user authentication and role-based permissions** to protect customer data and ensure that only authorized users can perform sensitive operations.   
+- **Integrate with shipping providers for live tracking information** to retrieve live tracking information and delivery updates. - **Integrate with payment services using appropriate transaction controls** to support actual refund processing and transaction management.    
+- **Add automated tests, monitoring, audit logging, and stronger error handling**.  
+- **Review confirmation, authorization, privacy, and recovery workflows for every sensitive operation**.    
 
-These enhancements would transform the prototype from a simulated demonstration into a more reliable, secure, and practical customer-support solution.
+These changes would require careful design and testing; they are not provided by the current demonstration.
 
 ---  
 
 ## Contributing  
 
-Contributions are welcomed to improve the AI-Powered Customer Support Assistant with Anthropic Claude. The suggested workflow is the following:  
+Contributions are welcome to improve the AI-Powered Customer Support Assistant with Anthropic Claude:   
 
-1. Fork the GitHub repository    
+1. Fork the GitHub repository.      
 2. Create a feature branch:  
    
 ```bash  
 git checkout -b feat/your-feature
 ```
 
-3. Commit and push your changes  
-4. Submit a Pull Request and describe your contribution.
+3. Make and test your changes.    
+4. Commit and push your branch.     
+5. Open a pull request describing your contribution.  
    
-> _Note_ : Please follow the repository code style and add tests for major features.
+Please follow the repository code style and add tests for significant changes.    
 
 ---  
 
 ## References  
 
-- [Claude Platform Docs](https://platform.claude.com/docs/en/home)    
+- [Claude Platform documentation](https://platform.claude.com/docs/en/home)    
 - [Anthropic](https://www.anthropic.com/)
-- [Steamlit](https://docs.streamlit.io/)    
+- [Streamlit documentation](https://docs.streamlit.io/)    
 - [Technical Evaluation Rubric](https://app.readytensor.ai/publications/technical-excellence-in-aiml-and-data-science-publications-an-evaluation-rubric-WsaE5uxLBqnH)  
 - [Engage and Inspire: Best Practices for Publishing on Ready Tensor](https://app.readytensor.ai/publications/engage-and-inspire-best-practices-for-publishing-on-ready-tensor-SBgkOyUsP8qQ)
-- [The Open Source Repository Guide: Best Practices for Sharing Your AI/ML and Data Science Projects](https://app.readytensor.ai/publications/best-practices-for-ai-project-code-repositories-0llldKKtn8Xb)
+- [The Open Source Repository Guide](https://app.readytensor.ai/publications/best-practices-for-ai-project-code-repositories-0llldKKtn8Xb)
 - [Markdown for Machine Learning Projects: A Comprehensive Guide](https://app.readytensor.ai/publications/markdown-for-machine-learning-projects-a-comprehensive-guide-LX9cbIx7mQs9)  
 
 ---  
 
-## Licence  
+## License  
 
-This project is licensed under the MIT License. See the LICENSE file for details.  
+This project is licensed under the MIT License. See the `LICENSE` file for details.  
 
 ---  
 
@@ -461,3 +469,6 @@ michelaagostini73@gmail.com
 
 ## Acknowledgements
 
+Thank you to the authors and maintainers of the tools and resources referenced above.  
+
+---  
