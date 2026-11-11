@@ -65,7 +65,7 @@ It provides both a practical example of AI-assisted customer support and a learn
 
 ---  
 
-## Project Structure (Repository structure) 
+## Repository Structure
 
 ```text
 AI_Customer_Support_Assistent_Anthropic/
@@ -90,20 +90,20 @@ AI_Customer_Support_Assistent_Anthropic/
 
 ```
 
-## Dataset Overview
+## Dataset Overview  
 
-The project uses a fictional, in-memory customer-support dataset embedded directly in the `support_backend.py` file. It consists of 10 customer records and 12 order records.
+The project uses a fictional, in-memory customer support dataset embedded directly in `support_backend.py`. It includes:
 
-The dataset includes:
+- 10 customer records
+- 12 order records
+- Customer details (information) such as IDs, names, emails, phone numbers, and usernames
+- Order details such as order ID, product, quantity, price, and status
+- Shipping details such as carrier, tracking number, estimated delivery date, and tracking events
+- Refund information including eligibility and potential refund amounts
 
-- **Customer information:** Customer IDs, names, email addresses, phone numbers, and usernames.
-- **Order details:** Order IDs, product names, quantities, unit prices, and order statuses.
-- **Shipping information:** Shipping status, carrier (UPS, USPS, and FedEx), tracking numbers, estimated delivery dates, and tracking events.
-- **Refund information:** Refund status, eligibility, and simulated refund amounts in USD.
+This data supports workflows such as customer lookup, order management, shipment tracking, refunds, and cancellations.
 
-The data supports demonstrations of customer lookup, order management, shipment tracking, order cancellation, and refund workflows.
-
-**Note:** All records are fictional and stored in memory. No separate dataset file is required, and no real shipping or payment services are connected.
+> All records are fictional and stored in memory. No separate dataset file is required, and there is no connection to real financial or logistics systems.
 
 ---  
 
@@ -121,18 +121,20 @@ Based on the actual `support_backend.py` file, there are seven tools defined and
 | `check_refund_eligibility` | Checks whether an order qualifies for a refund and calculates the potential refund amount. | `order_id` |
 | `issue_refund` | Records a simulated refund after eligibility has been verified and the customer has explicitly confirmed the action. | `order_id` |
 
+Each tool is defined through Anthropic's tool-use interface and executed by the Python backend through a dedicated dispatcher. Claude determines when a tool is needed, while the backend validates and executes the requested operation. Sensitive actions, such as cancellations and refunds, are subject to eligibility checks and explicit customer confirmation. All operations use fictional, in-memory data; no real orders or payments are affected.  
 
-> _Note : All seven tools are defined in the tools list and connected to their corresponding Python functions through process_tool_call()_
-
-Each tool is defined through Anthropic's tool-use interface and executed by the Python backend through a dedicated dispatcher. Claude determines when a tool is needed, while the backend validates and executes the requested operation. Sensitive actions, such as cancellations and refunds, are subject to eligibility checks and explicit customer confirmation. All operations use fictional, in-memory data; no real orders or payments are affected.
+> Note : All seven tools are defined in the tools list and connected to their corresponding Python functions through process_tool_call()
+---
 
 ## How Tool Use Works
 
 Tool use allows Claude to interact with external functions and systems through the Python application. In this project, Claude can request operations such as retrieving customer information, checking order details, tracking shipments, and processing eligible order-management actions.
 
-The tools are defined in `support_backend.py` and passed to Claude through the Anthropic Messages API. Claude determines when a tool is needed and generates a structured request containing the tool name and its input arguments. The Python application receives the request, executes the corresponding function, and sends the result back to Claude.
+The tools are defined in `support_backend.py` and passed to Claude via the Anthropic Messages API. Claude decides when a tool is needed and returns a structured request containing the tool name and arguments.
 
-**Claude does not execute Python functions directly.** The application is responsible for executing the requested operations and controlling access to the simulated database.
+### Important Principle
+
+Claude does not execute Python functions directly. The application is responsible for executing the requested operations and controlling access to the demo database.  
 
 ### Conceptual Flow
 
@@ -141,7 +143,7 @@ User
   ↓
 Streamlit application (app.py)
   ↓
-Claude – Anthropic Messages API
+Claude (Anthropic Messages API)
   ↓
 Structured tool request
   ↓
@@ -172,7 +174,7 @@ The process follows these steps:
 6. **Tool results:** The application collects the results and sends them back to Claude in a new message.
 7. **Final response:** Claude processes the returned results and either requests additional tools or produces its final response.
 
-The application uses the following `stop_reason` values:
+The application supports the following `stop_reason` values:  
 
 | `stop_reason` | Meaning |
 |---|---|
@@ -245,30 +247,37 @@ If a tool execution raises an exception, the application also returns an error r
 
 The `while True` loop in `run_assistant()` then calls Claude again with the updated conversation. This process continues until Claude returns `end_turn`, at which point the application extracts the text response and displays it in Streamlit.
 
-**Key principle:** Tool use is an iterative message exchange. Claude decides which tools to request, the Python backend executes them, and the results are returned to Claude so it can generate an informed response.  
-
-## Streamlit application 
-
-The `app.py` file is the main application entry point. It builds the user interface using Streamlit, manages the chat interaction between the user and Anthropic Claude, and handles the tool-calling workflow. It sends user messages and available tool definitions to Claude, processes Claude’s responses, and passes requested operations to the Python backend (support_backend.py). Finally, it displays the assistant’s responses in the chat interface, allowing users to interact with the customer-support assistant.
+**Key principle:** Tool use is an iterative message exchange. Claude decides which tools to request, the Python backend executes them, and the results are returned to Claude so it can generate an informed response.    
 
 ---
-## Installation & Setup
 
-This section shows how to install dependencies, configure authentication, and run the full pipeline.
+## Streamlit Application 
+
+The `app.py` file is the main application entry point. It:  
+
+- Builds the Streamlit interface  
+- Manages chat interaction between the user and Claude  
+- Handles tool calls and result processing    
+- Displays final responses in the app  
+
+---  
+
+## Installation and Setup
 
 ### Prerequisites:
 
 - Python 3.10+    
-- Anthropic Clauude API key    
+- Anthropic Clauude API key
+- Git    
 
-### Clone the repository
+### Clone the Repository
 
 ```bash
 git clone https://github.com/micag2025/AI_Customer_Support_Assitent_Anthropic.git
 cd AI_Customer_Support_Assitent_Anthropic
 ```
 
-### Create a virtual environment
+### Create a Virtual Environment
 
 On Windows:
 
@@ -284,7 +293,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-### Install dependencies
+### Install Dependencies
 
 ```bash
 python -m pip install streamlit anthropic python-dotenv
@@ -298,7 +307,7 @@ Create a `.env` file in the project root:
 ANTHROPIC_API_KEY=your_actual_anthropic_api_key
 ```
 
-Here the model 'claude-sonnet-5' has been selected and used. If the backend requires another configurable `model name`, also add the corresponding model setting used by `support_backend.py`. 
+This project uses the model `claude-sonnet-5`. If your backend configuration requires a different model name, update the corresponding setting in `support_backend.py`.  
 
 ---  
 
@@ -310,15 +319,15 @@ From the project directory, execute:
 python -m streamlit run app.py
 ```
 
-Streamlit will start the application and provide a local URL, normally:
+Streamlit will start the app and provide a local URL, such as:  
 
 ```text
 http://localhost:8501
 ```
 
-Open that address in your browser to interact with the customer-support assistant.  
+Open that URL in your browser to interact with the customer support assistant.  
 
-To stop the application, in the terminal where Streamlit is running, press:
+To stop the app, press:  
 
 ```bash
 Ctrl+C
@@ -339,7 +348,7 @@ The application separates the conversational layer from the business logic.
 
 ---
 
-## Example Queries for Testing the Application
+## Example Queries for Testing   
 
 The following examples can be used to test the Streamlit customer-support assistant and explore its main functionalities. They cover both successful interactions and scenarios involving errors, incomplete requests, and business-rule restrictions.
 
@@ -395,19 +404,15 @@ These examples demonstrate how the assistant interprets natural-language request
 
 ---
 
-## Example Use Cases (UI Walkthrough & Example Runs)  
+## Example Use Cases 
 
-### Web UI  
+### Web UI    
 
-The application features a clean, dark-themed interface built with Streamlit. The sidebar provides an overview of the available `customer-support functions`, including `order tracking`, `order lookup`, `refund eligibility checks`, and `order cancellations`. It also includes access to fictional demo records and a button to clear the conversation. The main area displays the application title, a notice explaining the simulated environment, and a `chat input where users can submit questions or requests`. This simple layout makes the assistant easy to navigate and interact with while demonstrating its main customer-support capabilities.
-
-![Web_UI](Screenshots/Screenshot_Interface.jpeg)
+The application includes a clean, dark-themed Streamlit interface. The sidebar provides an overview of available customer support functions, including order tracking, order lookup, cancellations, and refund checks. It also includes  a button to clear the conversation. The main area displays a `chat input where users can submit questions or requests`.   
 
 ---  
 
-Once the application is running, you can try requests such as:
-
-### Order lookup
+### Order Lookup
 
 ![Example1](Screenshots/Screenshot_Customer_Lookup.jpeg)    
 
@@ -437,13 +442,13 @@ Once the application is running, you can try requests such as:
 
 ---  
 
-### Error Handling and Negative Test Case : Missing Required Information  
+### Missing Required Information  
 
 ![Example6](Screenshots/Screenshot_Missing_required_information.jpeg)    
 
 ---  
 
-### Error Handling and Negative Test Case : Unknown Customer  
+### Unknown Customer    
 
 ![Example7](Screenshots/Screenshot_Unknown_customer.jpeg)   
 
@@ -452,78 +457,82 @@ The actual outcome depends on the demo records and the business rules implemente
 
 ---
 
-## Safety and Limitations
+## Safety and Limitations  
 
-This repository is intended for learning and experimentation.
+This project is intended for learning and experimentation.
 
-- The database contains fictional demonstration records.
-- Order and shipping information is not retrieved from real external services.
-- Refund and cancellation operations are simulated.
-- No real payment processor or logistics provider is connected.
-- The application should not be used to handle real customer information or transactions without additional security and operational controls.
+- The database contains fictional demo records
+- Order and shipping information is not retrieved from real external services
+- Refund and cancellation operations are simulated
+- No real payment processor or logistics provider is connected
+- The application should not be used to process real customer information or transactions without additional security and operational controls
 
-A production implementation would require persistent data storage, user authentication, authorization, secure API integrations, audit logging, error handling, and appropriate privacy controls.  
-
----  
-
-## Possible Future Improvements
-
-The project provides a starting point for further development. Potential extensions include:
-
-- Replacing the simulated database with a persistent database.
-- Integrating real shipping and tracking APIs.
-- Connecting to a payment provider in a controlled test environment.
-- Adding authentication and role-based authorization.
-- Introducing audit logs for sensitive operations.
-- Adding automated tests for backend functions and tool execution.
-- Improving observability, error handling, and conversation management.
-- Exploring more advanced agent workflows.
+A production implementation would require persistent data storage, user authentication, authorization, secure API integrations, audit logging, error handling, and stronger privacy safeguards.
 
 ---  
 
-## Contributing  
+## Possible Future Improvements  
 
-Contributions are welcomed to improve the Anthropic Claude Customer Support Assistant. The suggested workflow is the following:    
+Potential improvements include:
 
-- Fork the GitHub repository  
-- Create a feature branch:
-  
-```bash  
+- Replacing the simulated database with a persistent database
+- Integrating real shipping and tracking APIs
+- Connecting to a payment provider in a controlled test environment
+- Adding authentication and role-based authorization
+- Introducing audit logs for sensitive operations
+- Adding automated tests for backend functions and tool execution
+- Improving observability, error handling, and conversation management
+- Exploring more advanced agent workflows
+
+---  
+
+## Contributing    
+
+Contributions are welcome to improve the Anthropic Claude Customer Support Assistant.
+
+Suggested workflow:
+
+1. Fork the repository
+2. Create a feature branch:
+
+```bash
 git checkout -b feat/your-feature
 ```
-- Commit and push your changes  
-- Submit a Pull Request and describe your contribution.  
 
->_Note : Please follow the repository code style and add tests for major features._
+3. Commit and push your changes
+4. Open a pull request and describe your contribution
+
+> Please follow the repository’s code style and add tests for major features.
 
 ---  
 
 ## References    
 
-- [Claude Platform documentation](https://platform.claude.com/docs/en/home)    
+- [Claude Platform Documentation](https://platform.claude.com/docs/en/home)
 - [Anthropic](https://www.anthropic.com/)
-- [Streamlit documentation](https://docs.streamlit.io/)    
-- [Technical Evaluation Rubric](https://app.readytensor.ai/publications/technical-excellence-in-aiml-and-data-science-publications-an-evaluation-rubric-WsaE5uxLBqnH)  
+- [Streamlit Documentation](https://docs.streamlit.io/)
+- [Technical Evaluation Rubric](https://app.readytensor.ai/publications/technical-excellence-in-aiml-and-data-science-publications-an-evaluation-rubric-WsaE5uxLBqnH)
 - [Engage and Inspire: Best Practices for Publishing on Ready Tensor](https://app.readytensor.ai/publications/engage-and-inspire-best-practices-for-publishing-on-ready-tensor-SBgkOyUsP8qQ)
 - [The Open Source Repository Guide](https://app.readytensor.ai/publications/best-practices-for-ai-project-code-repositories-0llldKKtn8Xb)
 - [Markdown for Machine Learning Projects: A Comprehensive Guide](https://app.readytensor.ai/publications/markdown-for-machine-learning-projects-a-comprehensive-guide-LX9cbIx7mQs9)  
 
-
 ---
 
-## License
+## License  
+
 This project is licensed under the [MIT License](/LICENSE).  
 
 ---  
 
-## Contact
+## Contact    
+
 If you encounter bugs, have questions, or want to request a new feature, please open an [issue](https://github.com/micag2025/AI_Customer_Support_Assitent_Anthropic/issues/) on this repository.
 
 ---  
 
 ## Acknowledgements  
 
-An acknowledgement to Ready Tensor developer community for creating a vibrant ecosystem where AI professionals can share projects, insights, and innovations, playing a meaningful role in accelerating the advancement of AI technology and in shaping practical, real-world developer tools such as this project.
+An acknowledgement to Ready Tensor developer community for creating a vibrant ecosystem where AI professionals can share projects, ideas, and innovations, helping accelerate learning and experimentation in the field of applied AI.    
 
 ---
 
