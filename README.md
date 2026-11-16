@@ -351,9 +351,9 @@ Screenshot of the Customer Lookup interface in the AI Customer Support Assistant
 
 ---
 
-### Order Information  (EVENTUALLY TO BE EXCLUDED AND SHOW UP ONLY IN THE RELATED GITHUB)    
+### Order Information  
 
-> What is the current status of order 13579?
+Order Information interface of the AI Customer Support Assistant, displaying essential order details such as status, purchased items, and delivery information to support fast and accurate customer assistance.
 
 ![Example2](Screenshots/Screenshot_Order_Information.jpeg)    
 
