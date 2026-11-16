@@ -453,7 +453,7 @@ Please follow the repository code style and add tests for significant changes.
 
 ## License  
 
-This project is licensed under the MIT License. See the `LICENSE` file for details.  
+This project is licensed under the [MIT License](https://github.com/micag2025/AI_Customer_Support_Assitent_Anthropic/blob/242f3dfe9bd3f08c5b536a057b5388810c80be96/LICENSE).  
 
 ---  
 
