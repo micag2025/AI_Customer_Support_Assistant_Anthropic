@@ -385,7 +385,7 @@ Screenshot of the AI Customer Support Assistant evaluating a customer’s refund
 
 ### (Error Handling and Negative Test Case:) Missing required information   
 
-> Where is my order?
+Screenshot of the AI customer support assistant interface displaying a validation message for missing required information. The system prompts the user to complete the necessary details before continuing, highlighting the built-in guidance and data-quality checks.  
 
 ![Example6](Screenshots/Screenshot_Missing_required_information.jpeg)    
 
