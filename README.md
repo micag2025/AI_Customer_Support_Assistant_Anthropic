@@ -345,7 +345,7 @@ The Streamlit interface features a dark-themed layout with a sidebar for order t
 
 ### Customer lookup    
 
-> Find the customer with email address john@gmail.com.  
+Screenshot of the Customer Lookup interface in the AI Customer Support Assistant, showcasing the streamlined workflow for retrieving customer information and supporting customer service interactions through an intuitive, AI-assisted dashboard.
 
 ![Example1](Screenshots/Screenshot_Customer_Lookup.jpeg)    
 
