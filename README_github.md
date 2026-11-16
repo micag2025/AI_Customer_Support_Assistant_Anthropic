@@ -348,61 +348,36 @@ The application separates the conversational layer from the business logic.
 
 ---
 
-## Example Queries for Testing   
+## Example Queries for Testing
 
-The following examples can be used to test the Streamlit customer-support assistant and explore its main functionalities. They cover both successful interactions and scenarios involving errors, incomplete requests, and business-rule restrictions.
+The following examples can be used to test the Streamlit customer-support assistant and explore its main functionality. They cover both **successful interactions** and **scenarios involving (error handling) invalid inputs, missing information, and business-rule restrictions**.
 
-### 1. Customer Lookup
-- "Find the customer with email address john@gmail.com."
-- "Show me all orders associated with this customer."
+| Category | Example Query | Expected Behavior |
+|---|---|---|
+| Customer Lookup | “Find the customer with email address john@gmail.com.” | The assistant identifies the matching customer and returns the relevant profile. |
+| Customer Lookup | “Show me all orders associated with this customer.” | The assistant retrieves the customer’s order history. |
+| Order Information | “Retrieve the details of order 24601.” | The assistant returns the order summary and current status. |
+| Order Information | “What is the current status of order 13579?” | The assistant checks the order record and reports its current status. |
+| Shipping and Tracking | “Where is my order 24601, and when is it expected to arrive?” | The assistant retrieves shipping information and the estimated delivery date. |
+| Shipping and Tracking | “Provide the latest tracking updates for order 54321.” | The assistant shows the available tracking events and latest shipment status. |
+| Shipping and Tracking | “Has order 86420 been delivered?” | The assistant confirms whether the order has been delivered. |
+| Order Cancellation | “I would like to cancel order 13579. Is that possible?” | The assistant checks whether the order is eligible for cancellation and requests confirmation if required. |
+| Order Cancellation | “Can order 97531 still be cancelled?” | The assistant determines whether the order is still in a cancellable state. |
+| Refund Eligibility | “Am I eligible for a refund for order 86420?” | The assistant checks refund eligibility and explains the result. |
+| Refund Eligibility | “Why is order 54321 not eligible for a refund?” | The assistant explains the relevant business rule that prevents the refund. |
+| Refund Eligibility | “I would like to request a refund for order 86420. Can you check its eligibility?” | The assistant verifies eligibility and asks for explicit user confirmation before proceeding.** |
+|Unknown customer| “Find the customer with email address unknown@example.com.” | The assistant reports that no matching customer was found. |
+| Unknown order | “Retrieve the details of order 99999.” | The assistant explains that the order could not be found. |
+| Invalid order ID | “Check the shipping status of order ABC-XYZ.” | The assistant reports that no matching order was found and asks the user to verify the order ID. |
+|Cancellation of an already shipped order | “I would like to cancel order 24601. Can you do that?” | The backend rejects the cancellation because the order has already shipped. |
+| Missing required information | “Where is my order?” | The assistant asks the user to provide an order ID before retrieving shipping information. |
 
-### 2. Order Information
-- "Retrieve the details of order 24601."
-- "What is the current status of order 13579?"
+**  _Refund processing requires an eligibility check and explicit customer confirmation. Refunds are recorded in the simulated database; no actual payment is processed._
 
-### 3. Shipping and Tracking
-- "Where is my order 24601, and when is it expected to arrive?"
-- "Provide the latest tracking updates for order 54321."
-- "Has order 86420 been delivered?"
 
-### 4. Order Cancellation
-- "I would like to cancel order 13579. Is that possible?"
-- "Can order 97531 still be cancelled?"
+These examples demonstrate how the assistant interprets natural-language requests, selects and invokes the appropriate tools, retrieves or updates information, and handles unsuccessful operations. The actual outcome depends on the demo records and the business rules implemented in the backend.
 
-The assistant should check the order status and request explicit customer confirmation before attempting cancellation. Only orders with a *Processing* status can be cancelled.
-
-### 5. Refund Eligibility and Processing
-- "Am I eligible for a refund for order 86420?"
-- "Why is order 54321 not eligible for a refund?"
-- "I would like to request a refund for order 86420. Can you check its eligibility?"
-
-After the assistant confirms eligibility, reply:
-- "Yes, I confirm that I want to proceed with the refund."
-
-Refund processing requires an eligibility check and explicit customer confirmation. Refunds are recorded in the simulated database; no actual payment is processed.
-
-### 6. Error Handling and Negative Test Cases
-
-The following queries test how the assistant handles unsuccessful tool calls, invalid inputs, missing information, and business-rule restrictions.
-
-- **Unknown customer:** "Find the customer with email address unknown@example.com."  
-  Expected behaviour: The assistant reports that no matching customer was found.
-
-- **Unknown order:** "Retrieve the details of order 99999."  
-  Expected behaviour: The assistant explains that the order could not be found.
-
-- **Invalid order ID:** "Check the shipping status of order ABC-XYZ."  
-  Expected behaviour: The assistant reports that no matching order was found and asks the user to verify the order ID. The current backend does not implement a separate order-ID format validation.
-
-- **Cancellation of an already shipped order:** "I would like to cancel order 24601. Can you do that?"  
-  Expected behaviour: The backend rejects the cancellation because the order is already shipped. The assistant explains that only orders with a *Processing* status can be cancelled.
-
-- **Missing required information:** "Where is my order?"  
-  Expected behaviour: The assistant asks the user to provide an order ID before attempting to retrieve shipping information.
-
-These examples demonstrate how the assistant interprets natural-language requests, selects and invokes the appropriate tools, retrieves or updates information, and handles unsuccessful operations. They also highlight the importance of backend validation, business-rule enforcement, and clear communication when a requested action cannot be completed.
-
----
+---  
 
 ## Example Use Cases 
 
