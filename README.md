@@ -12,18 +12,35 @@
 
 --- 
 
-## TL;DR
+## TL;DR  
 
-This is a practical AI engineering project showing how Anthropic Claude can interact with business tools to support customer service.
+Customer-support teams handle recurring requests about order status, delivery updates, cancellations, and refunds. This project demonstrates how a **conversational AI assistant** can help with those workflows by connecting **Anthropic Claude to application-defined Python tools**.
 
-The fictional database is not a drawback and it lets readers explore the architecture and test order lookup, cancellation, and refund workflows without needing access to real customer data or payment systems.
+The **Streamlit application** uses fictional customer and order records to demonstrate information lookup and simulated support operations. Claude interprets a request and may ask the application to call a tool; the Python backend validates the request, applies business rules, and returns a result for Claude to explain.
 
-The publication communicates three things:
-1. **The customer-support problem**: Customer-support teams spend time on repetitive requests such as order tracking, cancellations, and refund eligibility.  
-2. **The solution**: A Streamlit application connects Claude to Python functions that simulate these operations, with safeguards around sensitive actions.  
-3. **The learning value**: The project demonstrates tool use, backend integration, prompt design, and the steps needed to move from a prototype toward a production system.  
+The project is intended for learning and demonstration. It does not access real customer accounts, connect to live shipping or payment services, or process actual refunds. (The project demonstrates tool use, backend integration, prompt design, and the steps needed to move from a prototype toward a production system.)    
 
----    
+---  
+
+## Project goals (objectives)  
+
+This project explores how to:  
+
+- Connect a language model to application functions using tool calling.  
+- Separate conversational interpretation from data access and business logic.  
+- Demonstrate common customer-support workflows with fictional data.  
+- Apply checks and confirmation steps to sensitive operations.  
+- Identify the additional safeguards and integrations needed for a production system.  
+
+---  
+
+## The customer-support problem  
+
+Many customer-support requests follow familiar patterns: customers ask where an order is, whether it can be cancelled, or whether it qualifies for a refund. An assistant can help demonstrate how these requests might be routed to application tools rather than answered from the language model’s general knowledge alone.
+
+This distinction matters. The model can interpret a request and select a tool, but the application should remain responsible for accessing records, validating inputs, and enforcing operational rules.
+
+---  
 
 ## Potential Users and Applications
 
@@ -38,15 +55,18 @@ This application is designed to demonstrate how AI-powered customer support can 
 
 > Important: The current prototype is for demonstration and learning. It is not intended for direct use in live customer-support operations. 
 
----  
+---    
 
-## System Architecture
+## System architecture
 
-The application is organized into four main components: a **Streamlit user interface**, the **Anthropic Claude language model**, a **Python backend**, and a **simulated database**.
+The application is organized into four components, each with specific responsability:
 
-Each component has a specific responsibility. Streamlit manages the interaction with the user, Claude interprets requests and determines when application tools are needed, the Python backend executes the requested operations, and the simulated database provides the customer, order, and shipping information.
+1. **Streamlit user interface** — accepts user messages and displays the conversation.
+2. **Anthropic Claude** — interprets requests and returns either a conversational response or a structured tool-use request.
+3. **Python backend** — defines and executes the tools, validates their inputs, and applies business rules.
+4. **Simulated database** — provides fictional customer, order, and shipping information.
 
-A central design principle is that the language model does not directly access or modify the database. Instead, it communicates with the Python application through a structured tool-calling mechanism. This keeps data access and business operations under the control of the backend.
+The language model does not directly access or modify the database. The Python application mediates each tool call, keeping data access and business operations under the control of the backend.
 
 ### Main Components
 
@@ -158,49 +178,9 @@ The following diagram illustrates the main communication flow:
         └──────────────────────────┘
 
 
-*Figure 1 — Simplified system architecture showing how a user request travels through Streamlit, Anthropic Claude, the Python backend, and the simulated database before the final response is returned to the user. (Logical architecture and communication flow of the customer-support assistant.)*
+*Figure 1 — Simplified system architecture showing how a user request travels through Streamlit, Anthropic Claude, the Python backend, and the simulated database before the final response is returned to the user. (Logical architecture and communication flow of the customer-support assistant.)*  
 
-### Request and Tool-Execution Workflow
-
-A typical interaction follows these steps:
-
-1. **User request:** The user enters a message in the Streamlit chat interface, such as: "Can you check the shipping status of order 24601?"
-
-2. **Request preparation:** The application collects the conversation context and the available tool definitions and sends them to the Anthropic Claude API.
-
-3. **Request interpretation:** Claude analyzes the message and determines that it needs order and shipping information. It returns a structured request to invoke the appropriate tool.
-
-4. **Tool execution:** The Python application receives the tool request and dispatches it to the corresponding backend function.
-
-5. **Database interaction:** The backend retrieves the relevant order and shipping information from the simulated database.
-
-6. **Tool result:** The backend returns the retrieved information to the application, which sends the tool result back to Claude as part of the conversation.
-
-7. **Response generation:** Claude interprets the tool result and generates a natural-language explanation.
-
-8. **User feedback:** Streamlit displays the final response to the user.
-
-This interaction illustrates the distinction between language understanding and application execution: Claude determines what information or operation is needed, while the Python backend performs the actual work.
-
-### Handling Sensitive Operations
-
-Not all support requests are simple information queries. Some requests can change the state of an order, particularly cancellations and refunds.
-
-For these operations, the application incorporates additional safeguards. The assistant is instructed to check the relevant conditions and obtain explicit user confirmation before proceeding with a sensitive action.
-
-The general workflow is therefore:
-
-- Interpret the user's request.
-- Retrieve the relevant order information.
-- Check the applicable business conditions.
-- Explain the proposed action to the user.
-- Obtain explicit confirmation.
-- Execute the operation through the backend.
-- Report the result.
-
-This approach is important because an LLM should not be treated as the authority for modifying business records. The backend remains responsible for enforcing the application's operational rules.
-
-### Architectural Design Considerations
+#### Architectural Design Considerations
 
 The separation of the user interface, language model, backend logic, and data layer provides several advantages:
 
@@ -214,25 +194,49 @@ The architecture is deliberately simple and suitable for demonstrating the funda
 
 Overall, this architecture demonstrates how a conversational LLM can be connected to existing application logic, transforming a basic chatbot into an assistant capable of retrieving information and performing controlled operations.
 
+---  
 
-## Implementation   
+### Request and Tool-Execution Workflow  
+
+A typical interaction proceeds as follows:
+
+1. **User request:** A user enters a message, such as “Can you check the shipping status of order 24601?”
+2. **Request preparation:** The application sends the conversation, system instructions, and available tool definitions to Claude.
+3. **Tool selection:** Claude determines whether it needs information or an operation from the backend and, if so, returns a structured tool request.
+4. **Backend execution:** The application dispatches the request to the corresponding Python function.
+5. **Data access and validation:** The backend looks up the relevant fictional record and applies the appropriate business rules.
+6. **Tool result:** The application sends the backend result back to Claude.
+7. **Response generation:** Claude explains the result in natural language, and Streamlit displays it to the user.
+
+**In short:** User request → Claude tool request → backend validation and execution → tool result → Claude response.
+
+>_Note: This interaction illustrates the distinction between language understanding and application execution: Claude determines what information or operation is needed, while the Python backend performs the actual work._  
+
+---
+
+### Handling Sensitive Operations
+
+Not all support requests are simple information queries. Some requests can change the state of an order, particularly **cancellations and refunds**.
+
+Cancellation and refund requests can change an order’s state, so they require more care than information lookups (incorporating additional safeguards). The intended workflow is to retrieve the order, check the relevant conditions, explain the proposed action, obtain explicit confirmation, and then perform the simulated operation through the backend.
+
+This approach outlines that the backend should remain the authority for deciding whether an operation is allowed, thus it is responsible for enforcing the specific application's operational rule. A language model’s response should not, by itself, authorize a change to business records.
+
+---    
+
+## Implementation     
  
-The application connects to the Anthropic Claude API using the Python SDK, with the API key securely loaded from an environment variable.   
-A system prompt guides Claude to act as a customer-support assistant, follow business rules, verify eligibility for actions such as cancellations and refunds, and request user confirmation before executing sensitive operations.  
-Tool definitions describe the functions available to Claude, including order lookup, shipping-status checks, cancellations, and refund-related operations.
-When a user submits a request, Claude determines whether a tool is needed and, if so, returns a structured tool request. The Python backend dispatches the request, executes the corresponding function against the simulated database, and sends the result back to Claude. Claude then uses that result to generate a natural-language response displayed in the Streamlit interface.  
+The application uses the Anthropic Python SDK to communicate with Claude. The API key is loaded from an environment variable rather than being included in the source code.
 
-The tool execution process follows these steps:
+A system prompt guides the assistant to follow the support workflow, use tools when appropriate, check eligibility, and request confirmation before sensitive actions. Tool definitions describe the operations available to Claude, including their names, purposes, and input parameters. The Python backend implements and dispatches those operations.
 
-- **User request**: The user submits a question or instruction through the Streamlit interface.  
-- **Claude analysis**: The application sends the conversation, system prompt, and available tool definitions to Claude. Claude determines whether a tool is required.  
-- **Tool request**: If a tool is needed, Claude returns a structured tool-use request specifying the tool name and its input parameters.  
-- **Backend execution**: The Python backend receives the request, identifies the corresponding function, and executes it against the simulated database. Business rules and confirmation requirements are applied where relevant.  
-- **Tool result**: The backend returns the execution result to the application, which sends it back to Claude as a tool result.  
-- **Final response**: Claude uses the tool result to generate a natural-language answer, which is displayed to the user through Streamlit.  
+The assistant uses **seven tools for customer-support tasks**. Tool operations run against the simulated, in-memory database in `support_backend.py`. The exact operations and business rules are defined by the project code. The tool execution process has been already described in the `Request and Tool-Execution Workflow paragraph`.  
 
-> _Note : This process can repeat if Claude needs to call additional tools before responding. Importantly, Claude does not access the database directly; all database operations are handled by the Python backend through the defined tools._
+## Simulated data
 
+The demonstration database (is embedded in `support_backend.py` and) contains fictional customer and order records. The data includes customer contact details, products, order information, shipping statuses, carriers, tracking details, estimated delivery dates, and tracking events. It also includes information used to demonstrate refund and cancellation workflows.
+
+This dataset allows users to explore tool calling and application logic without using real customer information or connecting to external payment or shipping services. Because the database is in memory, changes made during a session are not retained after the application restarts.
 
 ## Testing the Application  
 
@@ -259,7 +263,7 @@ These scenarios illustrate the roles of tool selection, backend validation, and 
 
 ## Installation & Setup  
 
-This publication includes a complete GitHub code repository with all source code, configuration files, and test cases.  
+This publication includes a complete **GitHub code repository** with all source code, configuration files, and test cases.  
 
 This section shows how to install dependencies, configure authentication, and run the full pipeline.
 
