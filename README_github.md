@@ -454,6 +454,8 @@ Refund eligibility check in the AI Customer Support Assistant: the system review
 
 ### Missing Required Information  
 
+Example of the assistant’s required-field validation: the user is prompted to provide missing information before the request can proceed.  
+
 ![Example6](Screenshots/Screenshot_Missing_required_information.jpeg)    
 
 ---  
