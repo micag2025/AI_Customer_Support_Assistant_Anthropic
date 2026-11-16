@@ -377,7 +377,7 @@ Screenshot of the AI customer support assistant handling an order cancellation r
 
 ### Refund Eligibility (and Processing)  
 
-> Am I eligible for a refund for order 86420?
+Screenshot of the AI Customer Support Assistant evaluating a customer’s refund request and displaying the eligibility outcome based on policy and account context.  
 
 ![Example5](Screenshots/Screenshot_Refund_Eligibility.jpeg)   
 
