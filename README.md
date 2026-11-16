@@ -361,7 +361,7 @@ Order Information interface of the AI Customer Support Assistant, displaying ess
 
 ### Shipping and tracking    
 
-> Where is my order 24601, and when is it expected to arrive? 
+Shipping Tracking interface of the AI Customer Support Assistant, showing the shipment status, delivery progress, and key tracking information to assist customers with order updates.  
 
 ![Example3](Screenshots/Screenshot_Shipping_Tracking.jpeg)    
 
