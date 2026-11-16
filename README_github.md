@@ -446,6 +446,8 @@ Example of an AI customer support conversation in which the assistant processes 
 
 ### Refund Eligibility and Processing
 
+Refund eligibility check in the AI Customer Support Assistant: the system reviews the request against policy rules and presents the result and recommended next step.  
+
 ![Example5](Screenshots/Screenshot_Refund_Eligibility.jpeg)   
 
 ---  
