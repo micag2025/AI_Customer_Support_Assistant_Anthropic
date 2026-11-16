@@ -438,6 +438,8 @@ Shipping Tracking screen displaying the order’s current delivery status and tr
 
 ### Order Cancellation  
 
+Example of an AI customer support conversation in which the assistant processes an order cancellation request and provides a concise, helpful response to the customer.
+
 ![Example4](Screenshots/Screenshot_Order_Cancellation.jpeg)    
 
 ---  
