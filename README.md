@@ -367,9 +367,9 @@ Shipping Tracking interface of the AI Customer Support Assistant, showing the sh
 
 ---  
 
-### Order Cancellation  (EVENTUALLY TO BE EXCLUDED AND SHOW UP ONLY IN THE RELATED GITHUB)      
+### Order Cancellation  
 
-> Can order 97531 still be cancelled?  
+Screenshot of the AI customer support assistant handling an order cancellation request, illustrating a clear and user-friendly support interaction for resolving customer issues efficiently.  
 
 ![Example4](Screenshots/Screenshot_Order_Cancellation.jpeg)    
 
