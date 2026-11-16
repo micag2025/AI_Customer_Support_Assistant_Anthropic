@@ -420,7 +420,9 @@ Customer Lookup screen of the AI Customer Support Assistant, demonstrating how c
 
 ---
 
-### Order Information
+### Order Information  
+
+Order Information screen showing the customer’s order summary, including status, items, and shipping details, helping the assistant provide clear and timely support.
 
 ![Example2](Screenshots/Screenshot_Order_Information.jpeg)    
 
