@@ -16,7 +16,7 @@
 
 Customer-support teams handle recurring requests about order status, delivery updates, cancellations, and refunds. This project demonstrates how a **conversational AI assistant** can help with those workflows by connecting **Anthropic Claude to application-defined Python tools**.
 
-The **Streamlit application** uses fictional customer and order records to demonstrate information lookup and simulated support operations. Claude interprets a request and may ask the application to call a tool; the Python backend validates the request, applies business rules, and returns a result for Claude to explain.
+The **Streamlit application** uses fictional customer and order records to demonstrate information lookup and simulated support operations. **Claude** interprets a request and may ask the application to call a tool; the **Python backend** validates the request, applies business rules, and returns a result for Claude to explain.
 
 The project is intended for learning and demonstration. It does not access real customer accounts, connect to live shipping or payment services, or process actual refunds. (The project demonstrates tool use, backend integration, prompt design, and the steps needed to move from a prototype toward a production system.)    
 
