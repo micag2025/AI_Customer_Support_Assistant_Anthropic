@@ -428,7 +428,9 @@ Order Information screen showing the customer’s order summary, including statu
 
 ---  
 
-### Shipping and Tracking Information
+### Shipping and Tracking Information  
+
+Shipping Tracking screen displaying the order’s current delivery status and tracking details, enabling the assistant to provide real-time shipment support.
 
 ![Example3](Screenshots/Screenshot_Shipping_Tracking.jpeg)    
 
