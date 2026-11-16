@@ -412,7 +412,9 @@ The application includes a clean, dark-themed Streamlit interface. The sidebar p
 
 ---  
 
-### Order Lookup
+### Order Lookup  
+
+Customer Lookup screen of the AI Customer Support Assistant, demonstrating how customer data is retrieved and presented in a simple, user-friendly interface to support faster, more informed assistance.
 
 ![Example1](Screenshots/Screenshot_Customer_Lookup.jpeg)    
 
