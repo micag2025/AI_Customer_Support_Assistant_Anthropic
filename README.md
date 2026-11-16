@@ -2,15 +2,7 @@
 
 ---    
 
-## option1 
-
 ![cover_image1](/AI_Powered_Customer_Support_Flow1.png)    
-
----  
-
-## option2 
-
-![cover_image2](/AI_Customer_Support_Flow_Diagram_1.png)    
 
 ---  
 
