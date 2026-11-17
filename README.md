@@ -432,7 +432,7 @@ The prototype could be extended toward a more reliable and practical customer-su
 - **Add secure user authentication and role-based permissions** to protect customer data and ensure that only authorized users can perform sensitive operations.   
 - **Integrate with shipping providers** to retrieve live tracking information and delivery updates.
 - **Integrate with payment services** using appropriate transaction control to support actual refund processing and transaction management.    
-- **Add automated tests, monitoring, audit logging, and stronger error handling**.  
+- **Add automated tests, monitoring, audit logging, and stronger error handling** to improve reliability, safety, and troubleshooting.    
 - **Review confirmation, authorization, privacy, and recovery workflows** for every sensitive operation.    
 
 These changes would require careful design and testing; they are not provided by the current demonstration.
