@@ -242,7 +242,7 @@ This dataset allows users to explore tool calling and application logic without 
 
 The application was tested using a range of natural-language queries designed to evaluate its main customer-support functionalities and its ability to handle unsuccessful operations. The tests cover customer lookup, order retrieval, shipment tracking, order cancellation, and refund management. Particular attention was also given to negative test scenarios, including unknown customers, non-existent or invalid order identifiers, cancellation requests for already shipped orders, and queries containing insufficient information.  
 
-The project’s example scenarios are intended to demonstrate both **successful workflows** and **cases where the assistant should not proceed**. They include (The following table summarizes the main testing scenarios and the expected behaviour of the assistant):  
+The project’s example scenarios are intended to demonstrate both **successful workflows** and **cases where the assistant should not proceed**. The following table summarizes the main testing scenarios and the expected behaviour of the assistant:    
 
 | (Testing) Scenario | Expected behavior |
 |---|---|
@@ -383,7 +383,7 @@ Screenshot of the AI Customer Support Assistant evaluating a customer’s refund
 
 ---  
 
-### (Error Handling and Negative Test Case:) Missing required information   
+### Missing required information     
 
 Screenshot of the AI customer support assistant interface displaying a validation message for missing required information. The system prompts the user to complete the necessary details before continuing, highlighting the built-in guidance and data-quality checks.  
 
