@@ -261,7 +261,7 @@ The application was tested using a range of natural-language queries designed to
 
 The project’s example scenarios are intended to demonstrate both **successful workflows** and **cases where the assistant should not proceed**. The following table summarizes the main testing scenarios and the expected behaviour of the assistant:    
 
-| (Testing) Scenario | Expected behavior |
+| Testing Scenario | Expected behavior |
 |---|---|
 | Customer lookup | Return matching customer information or explain that no matching customer exists. |
 | Order lookup | Return order details or indicate that the order could not be found. |
