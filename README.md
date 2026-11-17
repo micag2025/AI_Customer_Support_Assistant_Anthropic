@@ -42,6 +42,13 @@ This distinction matters. The model can interpret a request and select a tool, b
 
 ---  
 
+## Why Anthropic Claude?
+
+Anthropic Claude provides the **language-understanding** and **tool-selection capabilities** that make this application more than a conventional rule-based chatbot.  
+Users can express customer-support requests in natural language rather than navigating predefined commands or menus. Claude interprets the request, uses the available tool definitions to identify the appropriate operation, and can incorporate the results returned by the Python backend into a clear, conversational response. Its **tool-use capabilities** allow the application to connect natural-language interactions with existing Python functions and business logic. In addition, system instructions guide the assistant's behavior, helping it follow the intended support workflow and respect confirmation requirements for sensitive operations. This combination makes **Claude a useful component for building conversational applications** that need to **interact with structured business data and application services**.  
+
+---
+
 ## Potential Users and Applications
 
 This application is designed to demonstrate how AI-powered customer support can assist different types of users and organizations, including: (This demonstration may be useful to:)
