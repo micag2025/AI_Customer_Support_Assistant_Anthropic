@@ -14,9 +14,9 @@
 
 ## TL;DR  
 
-Customer-support teams handle recurring requests about order status, delivery updates, cancellations, and refunds. This project demonstrates how a **conversational AI assistant** can support these workflows by connecting **Anthropic Claude to application-defined Python tools**.
+Customer-support teams handle recurring requests about order status, delivery updates, cancellations, and refunds. This project demonstrates how a **conversational AI assistant** can support these workflows by connecting **Anthropic Claude, a Large Language Model (LLM), to application-defined Python tools**.  
 
-The **Streamlit application** uses fictional customer and order records to demonstrate information lookup and simulated support operations. **Claude** interprets a request and may ask the application to call a tool. The **Python backend** validates the request, applies business rules, and returns a result for Claude to explain.
+The **Streamlit application** uses fictional customer and order records to demonstrate information lookup and simulated support operations. Claude interprets a request and may ask the application to call a tool. The **Python backend** validates the request, applies business rules, and returns a result for Claude to explain.
 
 The project is intended for learning and demonstration. It does not access real customer accounts, connect to live shipping or payment services, or process actual refunds. It demonstrates tool use, backend integration, prompt design, and some of the considerations involved in evolving a prototype toward a production system. 
 
@@ -119,18 +119,12 @@ This layer is also responsible for applying the application's business rules. Fo
 
 The assistant uses **seven tools** to support common customer-service tasks. All tool operations are executed by the Python backend against the simulated in-memory database. Refunds and order cancellations are demonstration operations and do not involve real payment or shipping services.
 
-**4. Simulated Database — Customer and Order Information**
+**4. Simulated Database — Data Layer**
 
-The simulated database (is embedded directly in the `support_backend.py` file) and consists of **10 fictional customer records and 12 order records**.
-
-It contains customer contact details, product and order information, shipping statuses, carrier and tracking details, estimated delivery dates, and tracking events. It also includes refund status and eligibility information.
-
-The backend uses this data to answer customer questions and perform the operations supported by the prototype. For example, an order lookup retrieves the relevant order record, while a shipping-status request uses the associated shipping information and tracking events.
-
-The database is intentionally simulated so that the application can demonstrate the interaction between an LLM and business operations without accessing real customer information or external payment and logistics services.
+The application uses a local, in-memory dataset to provide the customer, order, and shipping information required by the support tools. The Python backend accesses this data when executing tool requests. Further details about the dataset and its limitations are provided in the *Simulated Data* section.
 
 
-### Communication Between Components
+## Communication Between Components
 
 The following diagram illustrates the main communication flow:  
 
@@ -215,7 +209,7 @@ Overall, this architecture demonstrates how a conversational LLM can be connecte
 
 ---  
 
-### Request and Tool-Execution Workflow  
+## Request and Tool-Execution Workflow  
 
 A typical interaction proceeds as follows:
 
@@ -233,7 +227,7 @@ A typical interaction proceeds as follows:
 
 ---
 
-### Handling Sensitive Operations
+## Handling Sensitive Operations
 
 Not all support requests are simple information queries. Some requests can change the state of an order, particularly **cancellations and refunds**.
 
@@ -249,18 +243,17 @@ The application uses the Anthropic Python SDK to communicate with Claude. The AP
 
 A system prompt guides the assistant to follow the support workflow, use tools when appropriate, check eligibility, and request confirmation before sensitive actions. Tool definitions describe the operations available to Claude, including their names, purposes, and input parameters. The Python backend implements and dispatches those operations.
 
-The assistant uses **seven tools** for customer-support tasks. Tool operations run against the simulated, in-memory database in `support_backend.py`. The exact operations and business rules are defined by the project code.   
+The assistant uses **seven tools** to support common customer-service tasks. Each tool is implemented in the Python backend, which handles execution and applies the relevant business rules. The tools operate on the demonstration dataset described in the *Simulated Data* section.
 
-The tool-execution sequence is described in the **Request and Tool-Execution Workflow** section above.  In summary, Claude requests a tool when needed, the Python backend executes it and returns the result, and Claude uses that result to formulate the response shown in Streamlit.
+TO BE MOVED IN THE GITHUB? The configured Claude model is specified in the project backend. Before publication, verify that the model identifier documented in `support_backend.py` is current and matches the identifier used by the application.
 
-The configured Claude model is specified in the project backend. Before publication, verify that the model identifier documented in
-`support_backend.py` is current and matches the identifier used by the application.
 
-## Simulated data
+## Simulated Data
 
-The demonstration database (is embedded in `support_backend.py` and) contains fictional customer and order records. The data includes customer contact details, products, order information, shipping statuses, carriers, tracking details, estimated delivery dates, and tracking events. It also includes information used to demonstrate refund and cancellation workflows.
+The demonstration database is embedded in `support_backend.py` and contains **10 fictional customer records and 12 order records**. It includes customer contact details, product and order information, shipping statuses, carriers, tracking numbers, estimated delivery dates, and tracking events. It also contains information used to demonstrate refund eligibility and order-cancellation workflows.
 
-This dataset allows users to explore tool calling and application logic without using real customer information or connecting to external payment or shipping services. Because the database is in memory, changes made during a session are not retained after the application restarts.
+This dataset allows the application to demonstrate how Claude interacts with application-defined tools and how the Python backend retrieves and processes business information without using real customer information or connecting to external payment or shipping services. Since the data is stored in memory, changes made during a session are not retained after the application restarts. No real customer information, shipping services, or payment transactions are involved.
+
 
 ## Testing the Application  
 
@@ -427,7 +420,7 @@ The project includes basic safeguards to illustrate responsible tool use, but it
 - **Production security**: A deployed service would need secure data handling, access controls, monitoring, and robust validation. 
 - **External integrations**: A real service would need persistent storage and carefully designed integrations with shipping and payment providers.  
 
-_ **Note:** These limitations are intentional and allow the project to demonstrate AI-powered customer-support workflows without interacting with real customer accounts or financial transactions._ 
+_**Note:** These limitations are intentional and allow the project to demonstrate AI-powered customer-support workflows without interacting with real customer accounts or financial transactions._ 
 
 ---  
 
