@@ -383,7 +383,9 @@ These examples demonstrate how the assistant interprets natural-language request
 
 ### Web UI    
 
-The application includes a clean, dark-themed Streamlit interface. The sidebar provides an overview of available customer support functions, including order tracking, order lookup, cancellations, and refund checks. It also includes  a button to clear the conversation. The main area displays a `chat input where users can submit questions or requests`.   
+The application includes a clean, dark-themed Streamlit interface. The sidebar provides an overview of available customer support functions, including order tracking, order lookup, cancellations, and refund checks. It also includes  a button to clear the conversation. The main area displays a `chat input where users can submit questions or requests`.     
+
+![Web_UI](Screenshots/Screenshot_Interface.jpeg)  
 
 ---  
 
