@@ -8,24 +8,23 @@
 
 ## Tags  
 
-`Generative AI`, `Anthropic Claude`, `Python`, `Streamlit`, `AI Agents`, `Tool Calling`, `Customer Support Automation`, (`Conversational AI`, `API Integration`)
+`Generative AI`, `Anthropic Claude`, `Python`, `Streamlit`, `AI Agents`, `Tool Calling`, `Customer Support Automation`, `Conversational AI`, `API Integration`  
 
 --- 
 
 ## TL;DR  
 
-Customer-support teams handle recurring requests about order status, delivery updates, cancellations, and refunds. This project demonstrates how a **conversational AI assistant** can help with those workflows by connecting **Anthropic Claude to application-defined Python tools**.
+Customer-support teams handle recurring requests about order status, delivery updates, cancellations, and refunds. This project demonstrates how a **conversational AI assistant** can support these workflows by connecting **Anthropic Claude to application-defined Python tools**.
 
-The **Streamlit application** uses fictional customer and order records to demonstrate information lookup and simulated support operations. **Claude** interprets a request and may ask the application to call a tool; the **Python backend** validates the request, applies business rules, and returns a result for Claude to explain.
+The **Streamlit application** uses fictional customer and order records to demonstrate information lookup and simulated support operations. **Claude** interprets a request and may ask the application to call a tool. The **Python backend** validates the request, applies business rules, and returns a result for Claude to explain.
 
-The project is intended for learning and demonstration. It does not access real customer accounts, connect to live shipping or payment services, or process actual refunds. (The project demonstrates tool use, backend integration, prompt design, and the steps needed to move from a prototype toward a production system.)    
+The project is intended for learning and demonstration. It does not access real customer accounts, connect to live shipping or payment services, or process actual refunds. It demonstrates tool use, backend integration, prompt design, and some of the considerations involved in evolving a prototype toward a production system. 
 
 ---  
 
-## Project goals (objectives)  
+## Project objectives  
 
 This project explores how to:  
-
 - Connect a language model to application functions using tool calling.  
 - Separate conversational interpretation from data access and business logic.  
 - Demonstrate common customer-support workflows with fictional data.  
@@ -36,7 +35,7 @@ This project explores how to:
 
 ## The customer-support problem  
 
-Many customer-support requests follow familiar patterns: customers ask where an order is, whether it can be cancelled, or whether it qualifies for a refund. An assistant can help demonstrate how these requests might be routed to application tools rather than answered from the language model’s general knowledge alone.
+Many customer-support requests follow standard patterns: customers ask where an order is, whether it can be cancelled, or whether it qualifies for a refund. An assistant can help demonstrate how these requests might be routed to application tools rather than answered from the language model’s general knowledge alone.
 
 This distinction matters. The model can interpret a request and select a tool, but the application should remain responsible for accessing records, validating inputs, and enforcing operational rules.
 
@@ -44,14 +43,27 @@ This distinction matters. The model can interpret a request and select a tool, b
 
 ## Why Anthropic Claude?
 
-Anthropic Claude provides the **language-understanding** and **tool-selection capabilities** that make this application more than a conventional rule-based chatbot.  
-Users can express customer-support requests in natural language rather than navigating predefined commands or menus. Claude interprets the request, uses the available tool definitions to identify the appropriate operation, and can incorporate the results returned by the Python backend into a clear, conversational response. Its **tool-use capabilities** allow the application to connect natural-language interactions with existing Python functions and business logic. In addition, system instructions guide the assistant's behavior, helping it follow the intended support workflow and respect confirmation requirements for sensitive operations. This combination makes **Claude a useful component for building conversational applications** that need to **interact with structured business data and application services**.  
+Anthropic Claude provides the language-understanding and tool-use capabilities that make this application more than a conventional rule-based chatbot. Its integration allows users to express customer-support requests in natural language while enabling the application to connect those requests to predefined Python functions and business logic.
+
+The main advantages of using Claude in this application are summarized below:
+
+| Claude capability | Benefit for the application |
+|---|---|
+| **Natural-language understanding** | Users can ask questions in their own words without navigating predefined commands or menus. |
+| **Tool calling** | Claude can identify and request the appropriate backend function to retrieve information or perform a supported operation. |
+| **Contextual responses** | Claude uses the results returned by the backend to generate relevant, conversational answers. |
+| **Instruction following** | System prompts guide the assistant's behavior and help it follow the intended customer-support workflow. |
+| **Python integration** | Claude can interact with existing application functions through structured tool requests, without directly accessing the database. |
+
+By combining these capabilities, Claude acts as the conversational intelligence layer connecting users with the application's backend operations. The Python backend remains responsible for data access, validation, business rules, and execution of sensitive operations.
+
+
 
 ---
 
 ## Potential Users and Applications
 
-This application is designed to demonstrate how AI-powered customer support can assist different types of users and organizations, including: (This demonstration may be useful to:)
+This application is designed to demonstrate how AI-powered customer support can assist different types of users and organizations, including:  
 
 - **Customer-support agents** exploring ways to streamline routine inquiries.  
 - **E-commerce businesses and online retailers** considering AI-assisted order support.  
@@ -60,13 +72,13 @@ This application is designed to demonstrate how AI-powered customer support can 
 - **AI developers and students** learning about Claude, Python, Streamlit, and tool calling.  
 - **Software developers** exploring how language models can interact with application functions.  
 
-> Important: The current prototype is for demonstration and learning. It is not intended for direct use in live customer-support operations. 
+> **Important:** The current prototype is for demonstration and learning. It is not intended for direct use in live customer-support operations. 
 
 ---    
 
 ## System architecture
 
-The application is organized into four components, each with specific responsability:
+The application is organized into four components, each with a specific responsability:
 
 1. **Streamlit user interface** — accepts user messages and displays the conversation.
 2. **Anthropic Claude** — interprets requests and returns either a conversational response or a structured tool-use request.
@@ -105,11 +117,11 @@ When Claude requests a tool, the application passes the request to the backend. 
 
 This layer is also responsible for applying the application's business rules. For example, refund eligibility must be checked before a refund operation is performed. Sensitive actions, such as cancellations and refunds, are subject to confirmation safeguards.  
 
-The assistant uses seven tools to support common customer-service tasks. All tool operations are executed by the Python backend against the simulated in-memory database. Refunds and order cancellations are demonstration operations and do not involve real payment or shipping services.
+The assistant uses **seven tools** to support common customer-service tasks. All tool operations are executed by the Python backend against the simulated in-memory database. Refunds and order cancellations are demonstration operations and do not involve real payment or shipping services.
 
 **4. Simulated Database — Customer and Order Information**
 
-The simulated database provides the data used by the demonstration application. It (is embedded directly in the `support_backend.py` file) and consists of 10 fictional customer records and 12 order records.
+The simulated database (is embedded directly in the `support_backend.py` file) and consists of **10 fictional customer records and 12 order records**.
 
 It contains customer contact details, product and order information, shipping statuses, carrier and tracking details, estimated delivery dates, and tracking events. It also includes refund status and eligibility information.
 
@@ -185,7 +197,7 @@ The following diagram illustrates the main communication flow:
         └──────────────────────────┘
 
 
-*Figure 1 — Simplified system architecture showing how a user request travels through Streamlit, Anthropic Claude, the Python backend, and the simulated database before the final response is returned to the user. (Logical architecture and communication flow of the customer-support assistant.)*  
+_Figure 1 — Simplified system architecture showing how a user request travels through Streamlit, Anthropic Claude, the Python backend, and the simulated database before the final response is returned to the user._ 
 
 #### Architectural Design Considerations
 
@@ -217,7 +229,7 @@ A typical interaction proceeds as follows:
 
 **In short:** User request → Claude tool request → backend validation and execution → tool result → Claude response.
 
->_Note: This interaction illustrates the distinction between language understanding and application execution: Claude determines what information or operation is needed, while the Python backend performs the actual work._  
+> **Note:** This interaction illustrates the distinction between language understanding and application execution: Claude determines what information or operation is needed, while the Python backend performs the actual work. 
 
 ---
 
@@ -225,9 +237,9 @@ A typical interaction proceeds as follows:
 
 Not all support requests are simple information queries. Some requests can change the state of an order, particularly **cancellations and refunds**.
 
-Cancellation and refund requests can change an order’s state, so they require more care than information lookups (incorporating additional safeguards). The intended workflow is to retrieve the order, check the relevant conditions, explain the proposed action, obtain explicit confirmation, and then perform the simulated operation through the backend.
+Cancellation and refund requests require more care than information lookups. The intended workflow is to retrieve the order, check the relevant conditions, explain the proposed action, obtain explicit confirmation, and then perform the simulated operation through the backend.
 
-This approach outlines that the backend should remain the authority for deciding whether an operation is allowed, thus it is responsible for enforcing the specific application's operational rule. A language model’s response should not, by itself, authorize a change to business records.
+The backend should remain the authority for deciding whether an operation is allowed and for enforcing the application's operational rules. A language model's response should not, by itself, authorize a change to business records.
 
 ---    
 
@@ -237,7 +249,12 @@ The application uses the Anthropic Python SDK to communicate with Claude. The AP
 
 A system prompt guides the assistant to follow the support workflow, use tools when appropriate, check eligibility, and request confirmation before sensitive actions. Tool definitions describe the operations available to Claude, including their names, purposes, and input parameters. The Python backend implements and dispatches those operations.
 
-The assistant uses **seven tools for customer-support tasks**. Tool operations run against the simulated, in-memory database in `support_backend.py`. The exact operations and business rules are defined by the project code. The tool execution process has been already described in the `Request and Tool-Execution Workflow paragraph`.  
+The assistant uses **seven tools** for customer-support tasks. Tool operations run against the simulated, in-memory database in `support_backend.py`. The exact operations and business rules are defined by the project code.   
+
+The tool-execution sequence is described in the **Request and Tool-Execution Workflow** section above.  In summary, Claude requests a tool when needed, the Python backend executes it and returns the result, and Claude uses that result to formulate the response shown in Streamlit.
+
+The configured Claude model is specified in the project backend. Before publication, verify that the model identifier documented in
+`support_backend.py` is current and matches the identifier used by the application.
 
 ## Simulated data
 
@@ -264,7 +281,7 @@ The project’s example scenarios are intended to demonstrate both **successful 
 
 (These tests illustrate how the assistant combines natural-language understanding and tool selection with backend validation and business-rule enforcement. They also demonstrate that tool execution does not always result in a successful operation and that the application must handle such situations appropriately.)
 
-These scenarios illustrate the roles of tool selection, backend validation, and business-rule enforcement. For additional example queries and expected responses, see the project’s **Example Queries for Testing the Application** section in the project's GitHub repository.  
+These scenarios illustrate the roles of tool selection, backend validation, and business-rule enforcement. For additional example queries and expected responses, see the project’s **Example Queries for Testing the Application** section in the GitHub repository.  
 
 ---    
 
@@ -272,7 +289,7 @@ These scenarios illustrate the roles of tool selection, backend validation, and 
 
 This publication includes a complete **GitHub code repository** with all source code, configuration files, and test cases.  
 
-This section shows how to install dependencies, configure authentication, and run the full pipeline.
+This section explains how to install dependencies, configure authentication, and run the application.
 
 ### Prerequisites:
 
@@ -316,7 +333,8 @@ Create a `.env` file in the project root:
 ANTHROPIC_API_KEY=your_actual_anthropic_api_key
 ```
 
-Here the model 'claude-sonnet-5' has been selected and used. If the backend requires another configurable `model name`, also add the corresponding model setting used by `support_backend.py`. 
+Here the model 'claude-sonnet-5' has been selected and used. If the project uses a configurable model name, make
+sure the model setting in `support_backend.py` matches the model identifier supported by your Anthropic API account. 
 
 ---  
 
@@ -344,7 +362,7 @@ The screenshots below illustrate the application’s interface and example suppo
 
 ### Main Interface 
 
-The Streamlit interface features a dark-themed layout with a sidebar for order tracking, customer lookups, refunds, and cancellations. The main area provides a chat input for users to interact with the AI assistant. A demo notice highlights that all records and transactions are simulated.
+The Streamlit interface features a layout with a sidebar for order tracking, customer lookups, refunds, and cancellations. The main area provides a chat input for users to interact with the AI assistant. A demo notice highlights that all records and transactions are simulated.
 
 ![Web_UI](Screenshots/Screenshot_Interface.jpeg)  
 
@@ -352,7 +370,7 @@ The Streamlit interface features a dark-themed layout with a sidebar for order t
 
 ### Customer lookup    
 
-Screenshot of the Customer Lookup interface in the AI Customer Support Assistant, showcasing the streamlined workflow for retrieving customer information and supporting customer service interactions through an intuitive, AI-assisted dashboard.
+The Customer Lookup interface showcases the workflow for retrieving customer information and supporting customer-service interactions through the application.
 
 ![Example1](Screenshots/Screenshot_Customer_Lookup.jpeg)    
 
@@ -360,7 +378,7 @@ Screenshot of the Customer Lookup interface in the AI Customer Support Assistant
 
 ### Order Information  
 
-Order Information interface of the AI Customer Support Assistant, displaying essential order details such as status, purchased items, and delivery information to support fast and accurate customer assistance.
+The Order Information interface displays essential order details, such as status, purchased items, and delivery information, to support customer assistance.
 
 ![Example2](Screenshots/Screenshot_Order_Information.jpeg)    
 
@@ -368,7 +386,7 @@ Order Information interface of the AI Customer Support Assistant, displaying ess
 
 ### Shipping and tracking    
 
-Shipping Tracking interface of the AI Customer Support Assistant, showing the shipment status, delivery progress, and key tracking information to assist customers with order updates.  
+The Shipping Tracking interface shows the shipment status, delivery progress, and available tracking information.  
 
 ![Example3](Screenshots/Screenshot_Shipping_Tracking.jpeg)    
 
@@ -376,7 +394,7 @@ Shipping Tracking interface of the AI Customer Support Assistant, showing the sh
 
 ### Order Cancellation  
 
-Screenshot of the AI customer support assistant handling an order cancellation request, illustrating a clear and user-friendly support interaction for resolving customer issues efficiently.  
+This screenshot illustrates the assistant handling an order-cancellation request and guiding the user though the relevant support interaction.     
 
 ![Example4](Screenshots/Screenshot_Order_Cancellation.jpeg)    
 
@@ -384,7 +402,7 @@ Screenshot of the AI customer support assistant handling an order cancellation r
 
 ### Refund Eligibility (and Processing)  
 
-Screenshot of the AI Customer Support Assistant evaluating a customer’s refund request and displaying the eligibility outcome based on policy and account context.  
+This screenshot illustrates the assistant evaluating a refund request and displaying the eligibility outcome based on the policy and account context represented in the simulated data.  
 
 ![Example5](Screenshots/Screenshot_Refund_Eligibility.jpeg)   
 
@@ -392,7 +410,7 @@ Screenshot of the AI Customer Support Assistant evaluating a customer’s refund
 
 ### Missing required information     
 
-Screenshot of the AI customer support assistant interface displaying a validation message for missing required information. The system prompts the user to complete the necessary details before continuing, highlighting the built-in guidance and data-quality checks.  
+This screenshot shows the application displaying a validation message when required is missing. The assistent prompts the user to provide the necessary details before continuing.    
 
 ![Example6](Screenshots/Screenshot_Missing_required_information.jpeg)    
 
@@ -400,28 +418,29 @@ Screenshot of the AI customer support assistant interface displaying a validatio
 
 ## Safety and Limitations (and Workarounds)    
 
-The project includes basic safeguards to illustrate responsible tool use, but it is not production-ready: (Therefore, limitations are related to:)
+The project includes basic safeguards to illustrate responsible tool use, but it is not production-ready. Its main limitations:
 
 - **Fictional records**: Customer, order, and shipping details are simulated.  
 - **In-memory storage**: Changes are lost when the application restarts.  
 - **Simulated transactions**: Refunds do not transfer money, and shipping details are not retrieved from a live carrier.  
 - **Demonstration safeguards**: Confirmation prompts illustrate a workflow; they do not replace authentication or authorization.  
-- **Production security**: A deployed service would need secure data handling, access controls, monitoring, and robust validation.  
+- **Production security**: A deployed service would need secure data handling, access controls, monitoring, and robust validation. 
 - **External integrations**: A real service would need persistent storage and carefully designed integrations with shipping and payment providers.  
 
-_Note: These limitations are intentional and allow the project to demonstrate AI-powered customer-support workflows without interacting with real customer accounts or financial transactions._ 
+_ **Note:** These limitations are intentional and allow the project to demonstrate AI-powered customer-support workflows without interacting with real customer accounts or financial transactions._ 
 
 ---  
 
 ## Production roadmap    
 
-Possible next steps for evolving the prototype into a more reliable, secure, and practical customer-support application include (The prototype could be extended into a production-ready customer-support application through the following improvements):
+The prototype could be extended toward a more reliable and practical customer-support application through the following improvements:  
 
 - **Replace the in-memory data with a persistent database** to retain customer information, orders, and transaction history across application sessions.    
 - **Add secure user authentication and role-based permissions** to protect customer data and ensure that only authorized users can perform sensitive operations.   
-- **Integrate with shipping providers for live tracking information** to retrieve live tracking information and delivery updates. - **Integrate with payment services using appropriate transaction controls** to support actual refund processing and transaction management.    
+- **Integrate with shipping providers** to retrieve live tracking information and delivery updates.
+- **Integrate with payment services** using appropriate transaction control to support actual refund processing and transaction management.    
 - **Add automated tests, monitoring, audit logging, and stronger error handling**.  
-- **Review confirmation, authorization, privacy, and recovery workflows for every sensitive operation**.    
+- **Review confirmation, authorization, privacy, and recovery workflows** for every sensitive operation.    
 
 These changes would require careful design and testing; they are not provided by the current demonstration.
 
@@ -472,6 +491,6 @@ michelaagostini73@gmail.com
 
 ## Acknowledgements
 
-An acknowledgement to **Ready Tensor developer community** for creating a vibrant ecosystem where AI professionals can share projects, insights, and innovations, playing a meaningful role in accelerating the advancement of AI technology and in shaping practical, real-world developer tools such as this project.  
+Acknowledgements to the  **Ready Tensor developer community** for creating a vibrant ecosystem where AI professionals can share projects, insights, and innovations. This community helps accelerate the advancement of AI technology and supports the development of practical, real-world developer tools.  
 
 ---  
