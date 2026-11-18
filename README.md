@@ -381,7 +381,7 @@ The Order Information interface displays essential order details, such as status
 
 The Shipping Tracking interface shows the shipment status, delivery progress, and available tracking information.  
 
-![Example3](Screenshots/Screenshot_Shipping_Tracking.jpeg)    
+![Example3](Screenshots/Screenshot_Shipping_Tracking_Information.jpeg)    
 
 ---  
 
