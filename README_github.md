@@ -81,7 +81,7 @@ AI_Customer_Support_Assistent_Anthropic/
 │   └── Screenshot_Missing_required_information.jpeg
 ├── .env_example          # Example environment configuration
 ├── app.py                # Streamlit user interface
-├── helper.py             # # Utility functions for loading environment variables and retrieving the Anthropic API key
+├── helper.py             # Utility functions for loading environment variables and retrieving the Anthropic API key
 ├── requirements.txt      # Python dependencies
 ├── support_backend.py    # Demo database, tools, and backend logic
 ├── .gitignore            # Files excluded from Git
@@ -350,7 +350,7 @@ The application separates the conversational layer from the business logic.
 
 ## Example Queries for Testing
 
-The following examples can be used to test the Streamlit customer-support assistant and explore its main functionality. They cover **successful interactions** as well as **scenarios involving invalid inputs, missing information, and business-rule restrictions**.
+The following examples can be used to test the Streamlit customer-support assistant and explore its main functionality. They cover **successful interactions** as well as **scenarios involving invalid inputs, missing information, and business-rule restrictions**.    
 
 | Category | Example Query | Expected Behavior |
 |---|---|---|
@@ -365,15 +365,14 @@ The following examples can be used to test the Streamlit customer-support assist
 | Order Cancellation | “Can order 97531 still be cancelled?” | The assistant determines whether the order is still in a cancellable state. |
 | Refund Eligibility | “Am I eligible for a refund for order 86420?” | The assistant checks refund eligibility and explains the result. |
 | Refund Eligibility | “Why is order 54321 not eligible for a refund?” | The assistant explains the relevant business rule that prevents the refund. |
-| Refund Eligibility | “I would like to request a refund for order 86420. Can you check its eligibility?” | The assistant verifies eligibility and asks for explicit user confirmation before proceeding.** |
-|Unknown customer| “Find the customer with email address unknown@example.com.” | The assistant reports that no matching customer was found. |
-| Unknown order | “Retrieve the details of order 99999.” | The assistant explains that the order could not be found. |
-| Invalid order ID | “Check the shipping status of order ABC-XYZ.” | The assistant reports that no matching order was found and asks the user to verify the order ID. |
-|Cancellation of an already shipped order | “I would like to cancel order 24601. Can you do that?” | The backend rejects the cancellation because the order has already shipped. |
-| Missing required information | “Where is my order?” | The assistant asks the user to provide an order ID before retrieving shipping information. |
+| Refund Eligibility | “I would like to request a refund for order 86420. Can you check its eligibility?” | The assistant verifies eligibility and requests explicit customer confirmation before proceeding.[1] |
+| Unknown Customer | “Find the customer with email address unknown@example.com.” | The assistant reports that no matching customer was found. |
+| Unknown Order | “Retrieve the details of order 99999.” | The assistant explains that the order could not be found. |
+| Invalid Order ID | “Check the shipping status of order ABC-XYZ.” | The assistant reports that no matching order was found and asks the user to verify the order ID. |
+| Cancellation of an Already Shipped Order | “I would like to cancel order 24601. Can you do that?” | The backend rejects the cancellation because the order has already shipped. |
+| Missing Required Information | “Where is my order?” | The assistant asks the user to provide an order ID before retrieving shipping information. |
 
-**  _Refund processing requires an eligibility check and explicit customer confirmation. Refunds are recorded in the simulated database; no actual payment is processed._
-
+**[1] Refund processing:** An eligibility check and explicit customer confirmation are required before a refund is recorded. Refunds are simulated in the database; no actual payment is processed.
 
 These examples demonstrate how the assistant interprets natural-language requests, selects and invokes the appropriate tools, retrieves or updates information, and handles unsuccessful operations. The actual outcome depends on the demo records and the business rules implemented in the backend.
 
