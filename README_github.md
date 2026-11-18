@@ -434,7 +434,7 @@ This screenshot illustrates how the assistant checks refund eligibility against 
 
 Example of the assistant’s required-field validation: the user is prompted to provide missing information before the request can proceed.  
 
-![Example6](Screenshots/Screenshot_Missing_required_information.jpeg)    
+![Example6](Screenshots/Screenshot_Missing_Required_Information.jpeg)    
 
 ---  
 
