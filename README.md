@@ -37,7 +37,7 @@ This project explores how to:
 
 Many customer-support requests follow standard patterns: customers ask where an order is, whether it can be cancelled, or whether it qualifies for a refund. An assistant can help demonstrate how these requests might be routed to application tools rather than answered from the language model’s general knowledge alone.
 
-This distinction matters. The model can interpret a request and select a tool, but the application should remain responsible for accessing records, validating inputs, and enforcing operational rules.
+This distinction matters since the model can interpret a request and select a tool, but the application should remain responsible for accessing records, validating inputs, and enforcing operational rules.
 
 ---  
 
