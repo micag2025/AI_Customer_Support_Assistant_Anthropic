@@ -296,7 +296,7 @@ source .venv/bin/activate
 ### Install Dependencies
 
 ```bash
-python -m pip install streamlit anthropic python-dotenv
+python -m pip install -r requirements.txt
 ```
 
 ### Configure the Anthropic API key
