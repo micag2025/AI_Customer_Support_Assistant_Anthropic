@@ -334,7 +334,7 @@ Ctrl+C
 ```
 ---    
 
-## How It Works
+## How It Works (TO BE REMOVED?)  
 
 The application separates the conversational layer from the business logic.
 
@@ -350,7 +350,7 @@ The application separates the conversational layer from the business logic.
 
 ## Example Queries for Testing
 
-The following examples can be used to test the Streamlit customer-support assistant and explore its main functionality. They cover both **successful interactions** and **scenarios involving (error handling) invalid inputs, missing information, and business-rule restrictions**.
+The following examples can be used to test the Streamlit customer-support assistant and explore its main functionality. They cover **successful interactions** as well as **scenarios involving invalid inputs, missing information, and business-rule restrictions**.
 
 | Category | Example Query | Expected Behavior |
 |---|---|---|
@@ -405,17 +405,18 @@ Order Information screen showing the customer’s order summary, including statu
 
 ---  
 
-### Shipping and Tracking Information  
+### Shipping and Tracking Information    
 
-Shipping Tracking screen displaying the order’s current delivery status and tracking details, enabling the assistant to provide real-time shipment support.
+This screenshot shows how the assistant retrieves and presents the simulated shipment status, tracking number, estimated delivery date, and available tracking events.
+
 
 ![Example3](Screenshots/Screenshot_Shipping_Tracking.jpeg)    
 
 ---  
 
-### Order Cancellation  
+### Order Cancellation    
 
-Example of an AI customer support conversation in which the assistant processes an order cancellation request and provides a concise, helpful response to the customer.
+This screenshot demonstrates the cancellation workflow, including the eligibility checks and confirmation safeguards implemented in the backend.
 
 ![Example4](Screenshots/Screenshot_Order_Cancellation.jpeg)    
 
@@ -423,7 +424,8 @@ Example of an AI customer support conversation in which the assistant processes 
 
 ### Refund Eligibility and Processing
 
-Refund eligibility check in the AI Customer Support Assistant: the system reviews the request against policy rules and presents the result and recommended next step.  
+This screenshot illustrates how the assistant checks refund eligibility against the application's business rules and explains the result to the user.
+
 
 ![Example5](Screenshots/Screenshot_Refund_Eligibility.jpeg)   
 
