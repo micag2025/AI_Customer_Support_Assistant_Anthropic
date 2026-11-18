@@ -6,13 +6,12 @@ No real carrier or payment provider is contacted.
 
 import os
 from dotenv import load_dotenv
-from anthropic import Anthropic
-
-load_dotenv()
+from anthropic import Anthropic  
+from helper import get_anthropic_api_key
 
 MODEL_NAME = os.getenv("ANTHROPIC_MODEL", "claude-sonnet-5")
 
-_api_key = os.getenv("ANTHROPIC_API_KEY")
+_api_key = get_anthropic_api_key()
 if not _api_key:
     raise RuntimeError(
         "ANTHROPIC_API_KEY was not found. Add it to a .env file in the project "
