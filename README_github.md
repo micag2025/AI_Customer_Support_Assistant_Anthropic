@@ -267,14 +267,14 @@ The `app.py` file is the main application entry point. It:
 ### Prerequisites:
 
 - Python 3.10+    
-- Anthropic Clauude API key
+- Anthropic API key  
 - Git    
 
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/micag2025/AI_Customer_Support_Assitent_Anthropic.git
-cd AI_Customer_Support_Assitent_Anthropic
+git clone https://github.com/micag2025/AI_Customer_Support_Assistant_Anthropic.git
+cd AI_Customer_Support_Assistant_Anthropic  
 ```
 
 ### Create a Virtual Environment
