@@ -405,7 +405,7 @@ This screenshot illustrates the assistant evaluating a refund request and displa
 
 This screenshot shows the application displaying a validation message when required is missing. The assistent prompts the user to provide the necessary details before continuing.    
 
-![Example6](Screenshots/Screenshot_Missing_required_information.jpeg)    
+![Example6](Screenshots/Screenshot_Missing_Required_Information.jpeg)    
 
 ---  
 
