@@ -293,8 +293,8 @@ This section explains how to install dependencies, configure authentication, and
 ### Clone the repository
 
 ```bash
-git clone https://github.com/micag2025/AI_Customer_Support_Assitent_Anthropic.git
-cd AI_Customer_Support_Assitent_Anthropic
+git clone https://github.com/micag2025/AI_Customer_Support_Assistant_Anthropic.git
+cd AI_Customer_Support_Assistant_Anthropic
 ```
 
 ### Create and activate a virtual environment  
@@ -315,7 +315,7 @@ source .venv/bin/activate
 ### Install dependencies
 
 ```bash
-python -m pip install streamlit anthropic python-dotenv
+python -m pip install -r requirements.txt
 ```
 
 ### Configure the Anthropic API key
