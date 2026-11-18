@@ -523,7 +523,7 @@ If you encounter bugs, have questions, or want to request a new feature, please 
 
 ## Acknowledgements  
 
-An acknowledgement to Ready Tensor developer community for creating a vibrant ecosystem where AI professionals can share projects, ideas, and innovations, helping accelerate learning and experimentation in the field of applied AI.    
+Acknowledgements to the Ready Tensor developer community for creating a vibrant ecosystem where AI professionals can share projects, insights, and innovations, helping accelerate the advancement of AI technology.    
 
 ---
 
