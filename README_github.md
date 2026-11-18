@@ -442,7 +442,7 @@ Example of the assistant’s required-field validation: the user is prompted to 
 
 This screenshot shows the AI Customer Support Assistant interface handling an unidentified customer inquiry, highlighting the conversational support workflow and the assistant’s ability to respond to customer needs in real time.  
 
-![Example7](Screenshots/Screenshot_Unknown_customer.jpeg)   
+![Example7](Screenshots/Screenshot_Unknown_Customer.jpeg)   
 
 
 The actual outcome depends on the demo records and the business rules implemented in the backend.  
