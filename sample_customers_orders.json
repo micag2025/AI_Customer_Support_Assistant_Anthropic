@@ -1,0 +1,97 @@
+{
+  "customers": [
+    {
+      "id": "C1001",
+      "name": "Alex Morgan",
+      "email": "alex@example.com",
+      "phone": "555-0101",
+      "username": "alexm"
+    },
+    {
+      "id": "C1002",
+      "name": "Taylor Reed",
+      "email": "taylor@example.com",
+      "phone": "555-0102",
+      "username": "taylorr"
+    }
+  ],
+  "orders": [
+    {
+      "id": "O2001",
+      "customer_id": "C1001",
+      "product": "Wireless Mouse",
+      "quantity": 1,
+      "price": 24.99,
+      "status": "Processing",
+      "shipping_status": "Not shipped",
+      "carrier": null,
+      "tracking_number": null,
+      "estimated_delivery": null,
+      "shipped_at": null,
+      "delivered_at": null,
+      "tracking_events": [],
+      "refund_status": "Not requested",
+      "refund_eligible": true
+    },
+    {
+      "id": "O2002",
+      "customer_id": "C1001",
+      "product": "Bluetooth Speaker",
+      "quantity": 1,
+      "price": 49.99,
+      "status": "Shipped",
+      "shipping_status": "In transit",
+      "carrier": "UPS",
+      "tracking_number": "DEMO-UPS-2002",
+      "estimated_delivery": "2026-11-22",
+      "shipped_at": "2026-11-17",
+      "delivered_at": null,
+      "tracking_events": [
+        {
+          "timestamp": "2026-11-17 10:30",
+          "location": "Chicago, IL",
+          "status": "Picked up",
+          "description": "The carrier collected the package."
+        },
+        {
+          "timestamp": "2026-11-18 08:15",
+          "location": "Indianapolis, IN",
+          "status": "In transit",
+          "description": "The package is moving through the carrier network."
+        }
+      ],
+      "refund_status": "Not requested",
+      "refund_eligible": false
+    },
+    {
+      "id": "O2003",
+      "customer_id": "C1002",
+      "product": "Laptop Sleeve",
+      "quantity": 2,
+      "price": 19.99,
+      "status": "Delivered",
+      "shipping_status": "Delivered",
+      "carrier": "USPS",
+      "tracking_number": "DEMO-USPS-2003",
+      "estimated_delivery": "2026-11-16",
+      "shipped_at": "2026-11-13",
+      "delivered_at": "2026-11-16 14:20",
+      "tracking_events": [
+        {
+          "timestamp": "2026-11-13 09:00",
+          "location": "Columbus, OH",
+          "status": "Shipped",
+          "description": "The package was handed to the carrier."
+        },
+        {
+          "timestamp": "2026-11-16 14:20",
+          "location": "Cleveland, OH",
+          "status": "Delivered",
+          "description": "The package was delivered."
+        }
+      ],
+      "refund_status": "Not requested",
+      "refund_eligible": true
+    }
+  ]
+}
