@@ -409,7 +409,7 @@ Order Information screen showing the customer’s order summary, including statu
 This screenshot shows how the assistant retrieves and presents the simulated shipment status, tracking number, estimated delivery date, and available tracking events.
 
 
-![Example3](Screenshots/Screenshot_Shipping_Tracking.jpeg)    
+![Example3](Screenshots/Screenshot_Shipping_Tracking_Information.jpeg)    
 
 ---  
 
