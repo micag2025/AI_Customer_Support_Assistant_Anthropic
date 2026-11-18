@@ -7,7 +7,7 @@ from dotenv import load_dotenv, find_dotenv
 def load_env():
     _ = load_dotenv(find_dotenv())
 
-def get_openai_api_key():
+def get_anthropic_api_key():
     load_env()
-    anthropic_api_key = os.getenv("ANTHROPIC_API_KEY")
-    return anthropic_api_key
+    return os.getenv("ANTHROPIC_API_KEY")
+
