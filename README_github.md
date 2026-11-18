@@ -81,7 +81,7 @@ AI_Customer_Support_Assistent_Anthropic/
 │   └── Screenshot_Missing_required_information.jpeg
 ├── .env_example          # Example environment configuration
 ├── app.py                # Streamlit user interface
-├── helper.py
+├── helper.py             # # Utility functions for loading environment variables and retrieving the Anthropic API key
 ├── requirements.txt      # Python dependencies
 ├── support_backend.py    # Demo database, tools, and backend logic
 ├── .gitignore            # Files excluded from Git
