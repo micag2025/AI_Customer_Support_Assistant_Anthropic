@@ -461,11 +461,11 @@ The actual outcome depends on the demo records and the business rules implemente
 
 In addition to the built-in demonstration records, the application supports uploading custom customer and order datasets in JSON format. The following screenshots illustrate the selection of the sample dataset and a subsequent order lookup using the uploaded records.
 
-**1. Loading a user-provided dataset**
+**Loading a user-provided dataset**
 
 ![Application interface with uploaded sample dataset](Screenshots/Screenshot_Interface_uploaded_dataset.jpeg)
 
-**2. Retrieving order information from the uploaded dataset**
+**Retrieving order information from the uploaded dataset**
 
 ![Order lookup using uploaded sample dataset](Screenshots/Screenshot_OrderLookup_uploaded_dataset.jpeg)
 
