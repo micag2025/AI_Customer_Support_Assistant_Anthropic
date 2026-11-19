@@ -70,7 +70,7 @@ It provides both a practical example of AI-assisted customer support and a learn
 ```text
 AI_Customer_Support_Assistent_Anthropic/
 │
-├── Screenshots/          # UI output examples
+├── Screenshots/          # Application screenshots for documentation.
 │   ├── Screenshot_Interface.jpeg
 │   ├── Screenshot_Customer_Lookup.jpeg
 │   ├── Screenshot_Order_Information.jpeg
@@ -79,14 +79,15 @@ AI_Customer_Support_Assistent_Anthropic/
 │   ├── Screenshot_Refund_Eligibility.jpeg
 │   ├── Screenshot_Unknown_customer.jpeg
 │   └── Screenshot_Missing_required_information.jpeg
-├── .env_example          # Example environment configuration
-├── app.py                # Streamlit user interface
-├── helper.py             # Utility functions for loading environment variables and retrieving the Anthropic API key
-├── requirements.txt      # Python dependencies
-├── support_backend.py    # Demo database, tools, and backend logic
-├── .gitignore            # Files excluded from Git
-├── LICENSE               # Project license
-├── README.md             # Project documentation
+├── .env_example              # Example environment configuration
+├── app.py                    # Streamlit interface, dataset upload, session management and chat interaction.
+├── helper.py                 # Utility functions for loading environment variables and retrieving the Anthropic API key
+├── support_backend.py        # Claude integration, seven tools, database operations and dataset validation/loading
+├── sample_customers_orders.json    # Example dataset for testing custom uploads.
+├── requirements.txt          # Python dependencies
+├── .gitignore                # Files excluded from Git
+├── LICENSE                   # Project license
+├── README.md                 # Installation, configuration, usage and dataset documentation.
 
 ```
 
@@ -121,9 +122,8 @@ Based on the actual `support_backend.py` file, there are seven tools defined and
 | `check_refund_eligibility` | Checks whether an order qualifies for a refund and calculates the potential refund amount. | `order_id` |
 | `issue_refund` | Records a simulated refund after eligibility has been verified and the customer has explicitly confirmed the action. | `order_id` |
 
-Each tool is defined through Anthropic's tool-use interface and executed by the Python backend through a dedicated dispatcher. Claude determines when a tool is needed, while the backend validates and executes the requested operation. Sensitive actions, such as cancellations and refunds, are subject to eligibility checks and explicit customer confirmation. All operations use fictional, in-memory data; no real orders or payments are affected.  
+Each tool is defined through Anthropic's tool-use interface and executed by the Python backend through a dedicated dispatcher, `process_tool_call()`. Claude determines when a tool is needed and generates the corresponding structured tool request, while the backend executes the requested operation against the active dataset. Operations such as order cancellations and refunds are subject to business-rule and eligibility checks. Explicit customer confirmation is requested through the conversation before these actions are performed. All operations use fictional, in-memory data; no real orders, shipments, or payments are affected.
 
-> Note : All seven tools are defined in the tools list and connected to their corresponding Python functions through process_tool_call()
 ---
 
 ## How Tool Use Works
@@ -159,6 +159,8 @@ Final response
   ↓
 Streamlit interface
 ```
+
+The user interacts with the assistant through the Streamlit interface. Claude interprets the request and determines whether one or more predefined tools are needed. When a tool is required, Claude returns a structured tool request. The Python backend executes the corresponding function and returns the result to Claude, which generates a natural-language response displayed in the Streamlit interface.
 
 ### The Tool-Use Message Loop
 
@@ -355,7 +357,7 @@ The following examples can be used to test the Streamlit customer-support assist
 | Category | Example Query | Expected Behavior |
 |---|---|---|
 | Customer Lookup | “Find the customer with email address john@gmail.com.” | The assistant identifies the matching customer and returns the relevant profile. |
-| Customer Lookup | “Show me all orders associated with this customer.” | The assistant retrieves the customer’s order history. |
+| Customer Lookup (Follow-up) | “Show me all orders associated with this customer.” | Using the customer identified in the previous interaction, the assistant retrieves and displays their order history.|
 | Order Information | “Retrieve the details of order 24601.” | The assistant returns the order summary and current status. |
 | Order Information | “What is the current status of order 13579?” | The assistant checks the order record and reports its current status. |
 | Shipping and Tracking | “Where is my order 24601, and when is it expected to arrive?” | The assistant retrieves shipping information and the estimated delivery date. |
@@ -449,32 +451,34 @@ The actual outcome depends on the demo records and the business rules implemente
 
 ---
 
-## Safety and Limitations  
+## Safety and Limitations
 
 This project is intended for learning and experimentation.
 
-- The database contains fictional demo records
-- Order and shipping information is not retrieved from real external services
-- Refund and cancellation operations are simulated
-- No real payment processor or logistics provider is connected
-- The application should not be used to process real customer information or transactions without additional security and operational controls
+- The database contains fictional demo records.
+- Order and shipping information is not retrieved from real external services.
+- Refund and cancellation operations are simulated.
+- No real payment processor or logistics provider is connected.
+- Customer lookup is currently supported by email address, phone number, or username. Lookup by customer name has not been implemented; when only a name is provided, the assistant requests an additional identifier to avoid selecting the wrong customer.
+- The application should not be used to process real customer information or transactions without additional security and operational controls.
 
-A production implementation would require persistent data storage, user authentication, authorization, secure API integrations, audit logging, error handling, and stronger privacy safeguards.
+A production implementation would require persistent data storage, user authentication, authorization, secure API integrations, audit logging, error handling, and stronger privacy safeguards.  
 
 ---  
 
-## Possible Future Improvements  
+## Possible Future Improvements
 
 Potential improvements include:
 
-- Replacing the simulated database with a persistent database
-- Integrating real shipping and tracking APIs
-- Connecting to a payment provider in a controlled test environment
-- Adding authentication and role-based authorization
-- Introducing audit logs for sensitive operations
-- Adding automated tests for backend functions and tool execution
-- Improving observability, error handling, and conversation management
-- Exploring more advanced agent workflows
+- Replacing the simulated database with a persistent database.
+- Integrating real shipping and tracking APIs.
+- Connecting to a payment provider in a controlled test environment.
+- Adding authentication and role-based authorization.
+- Introducing audit logs for sensitive operations.
+- Adding customer name lookup with ambiguity handling, allowing the assistant to request additional identifiers when multiple customers have the same name.
+- Adding automated tests for backend functions and tool execution.
+- Improving observability, error handling, and conversation management.
+- Exploring more advanced agent workflows.
 
 ---  
 
