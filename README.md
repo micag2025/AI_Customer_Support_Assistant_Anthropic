@@ -57,8 +57,6 @@ The main advantages of using Claude in this application are summarized below:
 
 By combining these capabilities, Claude acts as the conversational intelligence layer connecting users with the application's backend operations. The Python backend remains responsible for data access, validation, business rules, and execution of sensitive operations.
 
-
-
 ---
 
 ## Potential Users and Applications
@@ -128,25 +126,33 @@ The application uses a local, in-memory dataset to provide the customer, order, 
 
 The following diagram illustrates the main communication flow:  
 
-
+```  
         ┌──────────────────────────┐
-        │       User               │
+        │          User            │
         │  Asks a support question │
         └────────────┬─────────────┘
                      │
                      ▼
         ┌──────────────────────────┐
-        │      Streamlit UI        │
+        │       Streamlit UI       │
         │  Receives user request   │
+        │  Provides dataset upload │
         └────────────┬─────────────┘
                      │
-               Send request
+                     ▼
+        ┌──────────────────────────┐
+        │      Dataset Selection   │
+        │                          │
+        │  Built-in demo dataset   │
+        │           OR             │
+        │  Uploaded JSON dataset   │
+        └────────────┬─────────────┘
                      │
                      ▼
         ┌──────────────────────────┐
         │     Anthropic Claude     │
-        │ Understands the request  │
-        │ Selects the required tool│
+        │  Understands the request │
+        │  Selects the required tool│
         └────────────┬─────────────┘
                      │
                 Tool request
@@ -162,10 +168,11 @@ The following diagram illustrates the main communication flow:
                      │
                      ▼
         ┌──────────────────────────┐
-        │    Simulated Database    │
-        │   Customers              │
-        │   Orders                 │
-        │   Shipping Events        │
+        │       Active Dataset     │
+        │                          │
+        │       Customers          │
+        │         Orders           │
+        │    Shipping Events       │
         └────────────┬─────────────┘
                      │
                 Return data
@@ -180,7 +187,7 @@ The following diagram illustrates the main communication flow:
                      ▼
         ┌──────────────────────────┐
         │     Anthropic Claude     │
-        │  Generates final answer  │
+        │  Generates final answer │
         └────────────┬─────────────┘
                      │
                 Final response
@@ -190,8 +197,9 @@ The following diagram illustrates the main communication flow:
         │   Displays response      │
         └──────────────────────────┘
 
+```  
+_Figure 1 — Simplified system architecture illustrating how a user request is processed through Streamlit, Anthropic Claude, and the Python backend. The application supports both a built-in simulated dataset and an optional user-uploaded JSON dataset. The backend executes the requested operations against the active dataset and returns the results to Claude, which generates the final response._
 
-_Figure 1 — Simplified system architecture showing how a user request travels through Streamlit, Anthropic Claude, the Python backend, and the simulated database before the final response is returned to the user._ 
 
 #### Architectural Design Considerations
 
