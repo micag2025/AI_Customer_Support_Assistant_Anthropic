@@ -121,7 +121,6 @@ The assistant uses **seven tools** to support common customer-service tasks. All
 
 The application uses a local, in-memory dataset to provide the customer, order, and shipping information required by the support tools. The Python backend accesses this data when executing tool requests. Further details about the dataset and its limitations are provided in the *Simulated Data* section.
 
-
 ## Communication Between Components
 
 The following diagram illustrates the main communication flow:  
@@ -196,8 +195,7 @@ The following diagram illustrates the main communication flow:
         │       Streamlit UI       │
         │   Displays response      │
         └──────────────────────────┘
-
-```  
+```
 _Figure 1 — Simplified system architecture illustrating how a user request is processed through Streamlit, Anthropic Claude, and the Python backend. The application supports both a built-in simulated dataset and an optional user-uploaded JSON dataset. The backend executes the requested operations against the active dataset and returns the results to Claude, which generates the final response._
 
 
