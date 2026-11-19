@@ -78,7 +78,9 @@ AI_Customer_Support_Assistent_Anthropic/
 │   ├── Screenshot_Order_Cancellation.jpeg
 │   ├── Screenshot_Refund_Eligibility.jpeg
 │   ├── Screenshot_Unknown_customer.jpeg
-│   └── Screenshot_Missing_required_information.jpeg
+│   ├── Screenshot_Missing_required_information.jpeg
+│   ├── Screenshot_Interface_uploaded_dataset.jpeg
+│   └── Screenshot_Order_Lookup_uploaded_dataset.jpeg
 ├── .env_example              # Example environment configuration
 ├── app.py                    # Streamlit interface, dataset upload, session management and chat interaction.
 ├── helper.py                 # Utility functions for loading environment variables and retrieving the Anthropic API key
@@ -452,6 +454,20 @@ This screenshot shows the AI Customer Support Assistant interface handling an un
 
 
 The actual outcome depends on the demo records and the business rules implemented in the backend.  
+
+---
+
+### Working with a User-Provided Dataset
+
+In addition to the built-in demonstration records, the application supports uploading custom customer and order datasets in JSON format. The following screenshots illustrate the selection of the sample dataset and a subsequent order lookup using the uploaded records.
+
+**1. Loading a user-provided dataset**
+
+![Application interface with uploaded sample dataset](Screenshots/Screenshot_Interface_uploaded_dataset.jpeg)
+
+**2. Retrieving order information from the uploaded dataset**
+
+![Order lookup using uploaded sample dataset](Screenshots/Screenshot_OrderLookup_uploaded_dataset.jpeg)
 
 ---
 
