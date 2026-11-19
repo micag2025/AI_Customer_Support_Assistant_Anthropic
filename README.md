@@ -409,31 +409,32 @@ This screenshot shows the application displaying a validation message when requi
 
 ---  
 
-## Safety and Limitations (and Workarounds)    
+## Safety and Limitations   
 
-The project includes basic safeguards to illustrate responsible tool use, but it is not production-ready. Its main limitations:
+The project includes basic safeguards to illustrate responsible tool use, but it is not production-ready. Its main limitations include:
 
-- **Fictional records**: Customer, order, and shipping details are simulated.  
-- **In-memory storage**: Changes are lost when the application restarts.  
-- **Simulated transactions**: Refunds do not transfer money, and shipping details are not retrieved from a live carrier.  
-- **Demonstration safeguards**: Confirmation prompts illustrate a workflow; they do not replace authentication or authorization.  
-- **Production security**: A deployed service would need secure data handling, access controls, monitoring, and robust validation. 
-- **External integrations**: A real service would need persistent storage and carefully designed integrations with shipping and payment providers.  
+- **Fictional records**: Customer, order, and shipping details are simulated.
+- **In-memory storage**: Changes are lost when the application restarts.
+- **Simulated transactions**: Refunds do not transfer money, and shipping details are not retrieved from a live carrier.
+- **Demonstration safeguards**: Confirmation prompts illustrate a workflow; they do not replace authentication or authorization.
+- **Customer identification**: Customer lookup currently supports email addresses, phone numbers, and usernames. Lookup by customer name has not been implemented. When a customer is identified by name alone, the assistant requests an additional identifier to avoid selecting the wrong account. This limitation can be worked around by providing an email address, phone number, or username.
+- **Production security and integrations**: A deployed service would require secure data handling, access controls, monitoring, robust validation, persistent storage, and carefully designed integrations with shipping and payment providers.
 
-_**Note:** These limitations are intentional and allow the project to demonstrate AI-powered customer-support workflows without interacting with real customer accounts or financial transactions._ 
+_**Note:** These limitations are intentional and allow the project to demonstrate AI-powered customer-support workflows without interacting with real customer accounts or financial transactions._
 
----  
+---
 
-## Production roadmap    
+## Production Roadmap
 
-The prototype could be extended toward a more reliable and practical customer-support application through the following improvements:  
+The prototype could be extended toward a more reliable and practical customer-support application through the following improvements:
 
-- **Replace the in-memory data with a persistent database** to retain customer information, orders, and transaction history across application sessions.    
-- **Add secure user authentication and role-based permissions** to protect customer data and ensure that only authorized users can perform sensitive operations.   
+- **Replace in-memory data with a persistent database** to retain customer information, orders, and transaction history across application sessions.
+- **Add secure user authentication and role-based permissions** to protect customer data and ensure that only authorized users can perform sensitive operations.
+- **Improve customer identification** by introducing customer name lookup with ambiguity handling. When multiple customers share the same name, the assistant should request an additional identifier before retrieving account information.
 - **Integrate with shipping providers** to retrieve live tracking information and delivery updates.
-- **Integrate with payment services** using appropriate transaction control to support actual refund processing and transaction management.    
-- **Add automated tests, monitoring, audit logging, and stronger error handling** to improve reliability, safety, and troubleshooting.    
-- **Review confirmation, authorization, privacy, and recovery workflows** for every sensitive operation.    
+- **Integrate with payment services** using appropriate transaction controls to support actual refund processing and transaction management.
+- **Add automated tests, monitoring, audit logging, and stronger error handling** to improve reliability, safety, and troubleshooting.
+- **Review confirmation, authorization, privacy, and recovery workflows** for every sensitive operation.
 
 These changes would require careful design and testing; they are not provided by the current demonstration.
 
