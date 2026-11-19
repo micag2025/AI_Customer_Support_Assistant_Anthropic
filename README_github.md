@@ -91,20 +91,24 @@ AI_Customer_Support_Assistent_Anthropic/
 
 ```
 
-## Dataset Overview  
+## Dataset Overview
 
-The project uses a fictional, in-memory customer support dataset embedded directly in `support_backend.py`. It includes:
+The application supports both a **built-in fictional demonstration dataset** and **optional user-provided datasets in JSON format**.  
+
+By default, the project uses a fictional, in-memory customer support dataset embedded directly in `support_backend.py`. It includes:
 
 - 10 customer records
 - 12 order records
-- Customer details (information) such as IDs, names, emails, phone numbers, and usernames
+- Customer details such as IDs, names, email addresses, phone numbers, and usernames
 - Order details such as order ID, product, quantity, price, and status
 - Shipping details such as carrier, tracking number, estimated delivery date, and tracking events
-- Refund information including eligibility and potential refund amounts
+- Refund information, including eligibility and potential refund amounts
 
-This data supports workflows such as customer lookup, order management, shipment tracking, refunds, and cancellations.
+Users can also upload their own JSON datasets using the application's dataset upload feature. The repository includes `sample_customers_orders.json` as an example of the expected data structure. This allows users to experiment with different customer and order records without modifying the built-in demonstration data.
 
-> All records are fictional and stored in memory. No separate dataset file is required, and there is no connection to real financial or logistics systems.
+Both data sources support workflows such as customer lookup, order management, shipment tracking, refund eligibility checks, and cancellations.
+
+> **Note:** All built-in demonstration records and sample records are fictional. Data is maintained in memory during application execution. Changes are not persisted after the application restarts, and no real financial or logistics systems are connected.
 
 ---  
 
