@@ -361,7 +361,15 @@ The screenshots below illustrate the application’s interface and example suppo
 
 ### Main Interface 
 
-The Streamlit interface features a layout with a sidebar for order tracking, customer lookups, refunds, and cancellations. The main area provides a chat input for users to interact with the AI assistant. A demo notice highlights that all records and transactions are simulated.
+### Web UI
+
+The following screenshot illustrates the Streamlit interface, including the sidebar and the main chat area.
+
+The sidebar includes a **Data Source** section, allowing users to select the built-in demonstration dataset (the default option) or upload a custom JSON dataset. The **View Active Dataset** section allows users to inspect the currently loaded customer and order records.
+
+The sidebar also provides an overview of the available customer-support functions, including customer lookup, order tracking, cancellations, and refund eligibility checks, as well as a button to clear the conversation.
+
+The main area contains the chat interface, where users can submit requests in natural language and interact with the AI-powered assistant.
 
 ![Web_UI](Screenshots/Screenshot_Interface.jpeg)  
 
