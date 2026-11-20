@@ -342,20 +342,6 @@ Ctrl+C
 ```
 ---    
 
-## How It Works (TO BE REMOVED?)  
-
-The application separates the conversational layer from the business logic.
-
-1. The user enters a request through the Streamlit chat interface.
-2. The application sends the conversation and available tool definitions to Anthropic Claude.
-3. Claude interprets the request and determines whether one of the available tools is needed.
-4. If a tool is requested, the Python backend executes the corresponding function.
-5. The tool result is returned to Claude.
-6. Claude uses the result to formulate a response for the user.
-7. For sensitive operations, the application follows its confirmation and eligibility checks before executing the action.
-
----
-
 ## Example Queries for Testing
 
 The following examples can be used to test the Streamlit customer-support assistant and explore its main functionality. They cover **successful interactions** as well as **scenarios involving invalid inputs, missing information, and business-rule restrictions**.    
