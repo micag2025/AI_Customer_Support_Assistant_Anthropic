@@ -4,7 +4,7 @@ A practical customer-support chatbot built with **Anthropic Claude, Python, and 
 
 ## Overview  
 
-This repository contains the full implementation of the publication **Building an AI-Powered Customer Support Assistant with Anthropic Claude**, published on the **Ready Tensor platform**.  
+This repository contains the full implementation of the publication [Building an AI-Powered Customer Support Assistant with Anthropic Claude](https://app.readytensor.ai/publications/ai-powered-customer-support-assistant-with-anthropic-claude-DZ4iE6vqqgEi8t5dMka1B), published on the **Ready Tensor platform**.  
 
 Customer-support teams frequently handle recurring requests such as:
 
