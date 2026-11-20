@@ -315,7 +315,7 @@ Create a `.env` file in the project root:
 ANTHROPIC_API_KEY=your_actual_anthropic_api_key
 ```
 
-This project uses the model `claude-sonnet-5`. If your backend configuration requires a different model name, update the corresponding setting in `support_backend.py`.  
+The application uses `claude-sonnet-5` as its default model identifier. This setting is defined in `support_backend.py`. To use a different model, update the model configuration in that file with an identifier supported by your Anthropic API account.
 
 ---  
 
